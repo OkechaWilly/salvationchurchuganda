@@ -1,26 +1,188 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   SALVATION CHURCH UGANDA — Global Styles
+   Design tokens, typography defaults, utilities.
+   ============================================================ */
+
+@theme {
+  /* Brand colors */
+  --color-brand-red: #CC1120;
+  --color-brand-red-dark: #A50E1A;
+  --color-brand-red-light: #F5E5E7;
+
+  /* Warm-shifted neutral scale */
+  --color-stone-950: #0F0E0D;
+  --color-stone-900: #1A1917;
+  --color-stone-800: #2C2B28;
+  --color-stone-700: #44433F;
+  --color-stone-600: #6B6A65;
+  --color-stone-500: #8C8B85;
+  --color-stone-400: #B0AFA9;
+  --color-stone-300: #D1D0CA;
+  --color-stone-200: #E8E7E1;
+  --color-stone-100: #F2F1EB;
+  --color-stone-50: #FAF9F6;
+
+  /* Semantic aliases */
+  --color-background: #FAF9F6;
+  --color-foreground: #1A1917;
+  --color-muted: #8C8B85;
+  --color-border: #E8E7E1;
+  --color-surface: #F2F1EB;
+
+  /* Fonts */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+  }
+
+  body {
+    background-color: #FAF9F6;
+    color: #1A1917;
+    font-family: var(--font-sans);
+    line-height: 1.65;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Focus ring — keyboard nav */
+  :focus-visible {
+    outline: 2px solid #CC1120;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Heading defaults — display typeface */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #1A1917;
+  }
+
+  p { line-height: 1.7; }
+
+  a { color: inherit; text-decoration: none; }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  button { cursor: pointer; }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Layout containers */
+  .container-content {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 5vw, 2.5rem);
+  }
+
+  .container-narrow {
+    width: 100%;
+    max-width: 720px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 5vw, 2.5rem);
+  }
+
+  .container-wide {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 5vw, 2.5rem);
+  }
+
+  /* Section vertical rhythm */
+  .section-padding {
+    padding-block: clamp(3rem, 8vw, 6rem);
+  }
+
+  .section-padding-sm {
+    padding-block: clamp(2rem, 5vw, 4rem);
+  }
+
+  /* Display type scale */
+  .text-display-2xl {
+    font-size: clamp(2.75rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .text-display-xl {
+    font-size: clamp(2.25rem, 4vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  .text-display-lg {
+    font-size: clamp(1.75rem, 3vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .text-display-md {
+    font-size: clamp(1.375rem, 2.5vw, 2.25rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  .text-display-sm {
+    font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+    line-height: 1.25;
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #CC1120;
+  }
+
+  /* Dark section */
+  .section-dark {
+    background-color: #1A1917;
+    color: #FAF9F6;
+  }
+
+  .section-dark h1,
+  .section-dark h2,
+  .section-dark h3,
+  .section-dark h4,
+  .section-dark p {
+    color: #FAF9F6;
+  }
 }
