@@ -1,82 +1,82 @@
 import { NextResponse } from "next/server";
 
-const CHANNEL_HANDLE = "salvationchurchug";
-const YOUTUBE_API = "https://www.googleapis.com/youtube/v3";
+export const revalidate = 3600;
 
-type YouTubePlaylistItem = {
-  snippet?: {
-    title?: string;
-    publishedAt?: string;
-    channelTitle?: string;
-    resourceId?: { videoId?: string };
-    thumbnails?: {
-      high?: { url?: string };
-      medium?: { url?: string };
-      default?: { url?: string };
-    };
-  };
+// Public RSS feeds: no YouTube API key or exposed credentials required.
+const PLAYLIST_IDS = [
+  "PLSB9Ow_MK0JM", // Marriage Sermon Series
+  "PLpuONVkZDjiF2EVgKsKPcEGy-rJe9z6fv", // Sunday Service Sermons
+];
+
+type Sermon = {
+  id: string;
+  title: string;
+  publishedAt: string;
+  thumbnail: string;
+  channelTitle: string;
 };
 
+function decodeXml(value: string) {
+  return value
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+function parseFeed(xml: string): Sermon[] {
+  return [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)]
+    .map(([_, entry]) => {
+      const read = (tag: string) =>
+        entry.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`))?.[1]?.trim() ?? "";
+      const id = read("yt:videoId");
+      const title = decodeXml(read("title"));
+      const publishedAt = read("published");
+      const channelTitle = decodeXml(read("name")) || "Salvation Church Uganda";
+
+      if (!id || !title || !publishedAt) return null;
+      return {
+        id,
+        title,
+        publishedAt,
+        thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+        channelTitle,
+      };
+    })
+    .filter((video): video is Sermon => video !== null);
+}
+
 export async function GET() {
-  const apiKey = process.env.YOUTUBE_API_KEY;
-  if (!apiKey) {
-    return NextResponse.json(
-      { error: "The church video feed is not connected yet. Add YOUTUBE_API_KEY to the Vercel project environment variables." },
-      { status: 503 }
-    );
-  }
-
   try {
-    const channelUrl = new URL(`${YOUTUBE_API}/channels`);
-    channelUrl.search = new URLSearchParams({
-      part: "contentDetails",
-      forHandle: CHANNEL_HANDLE,
-      key: apiKey,
-    }).toString();
-
-    const channelResponse = await fetch(channelUrl, { next: { revalidate: 3600 } });
-    if (!channelResponse.ok) throw new Error("YouTube channel lookup failed.");
-    const channelData = await channelResponse.json();
-    const uploadsPlaylistId = channelData.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
-    if (!uploadsPlaylistId) throw new Error("Could not find the church channel's uploads playlist.");
-
-    const playlistUrl = new URL(`${YOUTUBE_API}/playlistItems`);
-    playlistUrl.search = new URLSearchParams({
-      part: "snippet",
-      playlistId: uploadsPlaylistId,
-      maxResults: "13",
-      key: apiKey,
-    }).toString();
-
-    const playlistResponse = await fetch(playlistUrl, { next: { revalidate: 900 } });
-    if (!playlistResponse.ok) throw new Error("Could not retrieve recent church videos.");
-    const playlistData = await playlistResponse.json();
-
-    const videos = ((playlistData.items ?? []) as YouTubePlaylistItem[])
-      .map((item) => {
-        const snippet = item.snippet;
-        const id = snippet?.resourceId?.videoId;
-        const thumbnail =
-          snippet?.thumbnails?.high?.url ??
-          snippet?.thumbnails?.medium?.url ??
-          snippet?.thumbnails?.default?.url;
-        if (!id || !thumbnail || !snippet?.title || !snippet.publishedAt) return null;
-        return {
-          id,
-          title: snippet.title,
-          publishedAt: snippet.publishedAt,
-          thumbnail,
-          channelTitle: snippet.channelTitle ?? "Salvation Church Uganda",
-        };
+    const feeds = await Promise.all(
+      PLAYLIST_IDS.map(async (playlistId) => {
+        const url = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
+        const response = await fetch(url, {
+          next: { revalidate: 3600 },
+          headers: { "User-Agent": "Mozilla/5.0 (compatible; SalvationChurchUganda/1.0)" },
+        });
+        if (!response.ok) throw new Error("YouTube feed unavailable");
+        return parseFeed(await response.text());
       })
-      .filter((video): video is NonNullable<typeof video> => video !== null);
+    );
 
-    return NextResponse.json({ videos }, {
-      headers: { "Cache-Control": "s-maxage=900, stale-while-revalidate=3600" },
-    });
+    const unique = new Map<string, Sermon>();
+    for (const video of feeds.flat()) {
+      if (!unique.has(video.id)) unique.set(video.id, video);
+    }
+
+    const videos = [...unique.values()]
+      .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
+      .slice(0, 13);
+
+    return NextResponse.json(
+      { videos },
+      { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } }
+    );
   } catch {
     return NextResponse.json(
-      { error: "We couldn't load the church's recent videos just now. Please try again later." },
+      { error: "We couldn't load the church's sermon feed just now. Please try again shortly." },
       { status: 502 }
     );
   }
