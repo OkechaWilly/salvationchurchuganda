@@ -89,7 +89,7 @@ async function addDurations(videos: Sermon[], apiKey: string) {
       durationSeconds: durations.get(video.id) ?? 0,
     }))
     .filter((video) =>
-      video.durationSeconds >= MIN_SERMON_DURATION_SECONDS
+      video.durationSeconds > MIN_SERMON_DURATION_SECONDS
       && !EXCLUDED_VIDEO_IDS.has(video.id)
     );
 }
