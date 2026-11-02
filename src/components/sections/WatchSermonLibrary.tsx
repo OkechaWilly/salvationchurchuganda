@@ -210,6 +210,40 @@ export function WatchSermonLibrary() {
 
      </div>
       </main>
+
+      {previewVideo && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 px-3 py-6 sm:px-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label={previewVideo.title}
+          onClick={(event) => { if (event.target === event.currentTarget) setPreviewVideo(null); }}
+        >
+          <div className="w-full max-w-6xl">
+            <div className="flex items-center justify-between gap-4 pb-3 text-white">
+              <div className="min-w-0">
+                <p className="text-[10px] uppercase tracking-[0.18em] text-white/55">Now watching</p>
+                <h2 className="truncate text-base sm:text-lg font-semibold">{previewVideo.title}</h2>
+              </div>
+              <button type="button" onClick={() => setPreviewVideo(null)} aria-label="Close video preview" className="shrink-0 rounded-full border border-white/25 p-2.5 text-white transition hover:bg-white hover:text-black">
+                <X size={20} />
+              </button>
+            </div>
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black shadow-2xl">
+              <iframe
+                key={previewVideo.id}
+                className="absolute inset-0 h-full w-full"
+                src={`https://www.youtube-nocookie.com/embed/${previewVideo.id}?autoplay=1&rel=0`}
+                title={previewVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+            <p className="pt-3 text-xs text-white/60">{previewVideo.channelTitle} · {formatDate(previewVideo.publishedAt)}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
