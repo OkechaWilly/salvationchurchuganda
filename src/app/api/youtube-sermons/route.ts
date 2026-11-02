@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 
-// Public channel uploads feed: no YouTube API key or exposed credentials required.
 const CHANNEL_ID = "UCR0LiLT-5NUp4OM5xL2I7ig";
 
 type Sermon = {
@@ -20,22 +19,29 @@ function decodeXml(value: string) {
     .replace(/&gt;/g, ">");
 }
 
+function readTag(source: string, tag: string) {
+  const opening = "<" + tag;
+  const start = source.indexOf(">", source.indexOf(opening));
+  const end = source.indexOf("</" + tag + ">", start + 1);
+  if (start < 0 || end < 0) return "";
+  return source.slice(start + 1, end).trim();
+}
+
 function parseFeed(xml: string): Sermon[] {
-  return [...xml.matchAll(/<entry>([\\s\\S]*?)<\\/entry>/g)]
-    .map(([_, entry]) => {
-      const read = (tag: string) =>
-        entry.match(new RegExp(`<${tag}[^>]*>([\\\\s\\\\S]*?)<\\\\/${tag}>`))?.[1]?.trim() ?? "";
-      const id = read("yt:videoId");
-      const title = decodeXml(read("title"));
-      const publishedAt = read("published");
-      const channelTitle = decodeXml(read("name")) || "Salvation Church Uganda";
+  const entries = xml.split("<entry>").slice(1);
+  return entries
+    .map((entry) => {
+      const id = readTag(entry, "yt:videoId");
+      const title = decodeXml(readTag(entry, "title"));
+      const publishedAt = readTag(entry, "published");
+      const channelTitle = decodeXml(readTag(entry, "name")) || "Salvation Church Uganda";
 
       if (!id || !title || !publishedAt) return null;
       return {
         id,
         title,
         publishedAt,
-        thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+        thumbnail: "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
         channelTitle,
       };
     })
@@ -44,7 +50,7 @@ function parseFeed(xml: string): Sermon[] {
 
 export async function GET() {
   try {
-    const url = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+    const url = "https://www.youtube.com/feeds/videos.xml?channel_id=" + CHANNEL_ID;
     const response = await fetch(url, {
       next: { revalidate: 3600 },
       headers: { "User-Agent": "Mozilla/5.0 (compatible; SalvationChurchUganda/1.0)" },
