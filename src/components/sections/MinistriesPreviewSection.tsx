@@ -1,98 +1,107 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
-// PLACEHOLDER: Ministry list requires confirmation from church leadership.
-// Replace these placeholder items with real ministry names, descriptions and icons.
-const PLACEHOLDER_MINISTRIES = [
+const MINISTRIES = [
   {
     id: "children",
-    name: "Children's Ministry",
-    description:
-      "A safe, fun and faith-building environment for children from infants through primary school.",
-    icon: "👧",
-    href: "/ministries/children",
+    name: "Sunday School",
+    description: "A separate programme for little children while the main church service is taking place.",
+    href: "/visit#kids",
+    image: "/images/child-prayer.jpg",
+    imageAlt: "Illustrative photograph for Sunday School",
+    featured: true,
   },
   {
     id: "youth",
     name: "Youth Ministry",
-    description:
-      "Building the next generation of leaders through fellowship, discipleship and community.",
-    icon: "⚡",
-    href: "/ministries/youth",
+    description: "Learn more about the youth ministry at Salvation Church Uganda.",
+    href: "/ministries",
+    image: "/images/worship-community.jpg",
+    imageAlt: "Illustrative church community photograph",
   },
   {
     id: "women",
     name: "Women's Ministry",
-    description:
-      "A community where women grow in faith, friendship and purpose together.",
-    icon: "🌸",
-    href: "/ministries/women",
+    description: "Find out more about the women's ministry at Salvation Church Uganda.",
+    href: "/ministries",
+    image: "/images/hands-bible-prayer.jpg",
+    imageAlt: "Illustrative photograph for church ministries",
   },
   {
     id: "men",
     name: "Men's Ministry",
-    description:
-      "Equipping men to lead their families and communities with integrity and faith.",
-    icon: "🛡️",
-    href: "/ministries/men",
+    description: "Find out more about the men's ministry at Salvation Church Uganda.",
+    href: "/ministries",
+    image: "/images/worship-community.jpg",
+    imageAlt: "Illustrative church community photograph",
   },
 ];
 
 export function MinistriesPreviewSection() {
   return (
     <section
-      className="section-padding bg-[#FAF9F6]"
+      className="section-padding bg-white border-t border-[#E8E7E1]"
       aria-labelledby="ministries-heading"
     >
       <div className="container-content">
-        {/* Section header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-          <div className="space-y-2">
-            <p className="eyebrow">Get Involved</p>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10 md:mb-14">
+          <div className="space-y-3 max-w-2xl">
+            <p className="eyebrow text-[#CC1120]">Life Together</p>
             <h2
               id="ministries-heading"
-              className="font-display text-display-lg text-[#1A1917]"
+              className="font-display text-4xl sm:text-5xl md:text-6xl text-[#1A1917] leading-[1.05]"
             >
-              Find your ministry
+              There&apos;s a place for you here.
             </h2>
           </div>
           <Link
             href="/ministries"
-            className="text-sm text-[#6B6A65] hover:text-[#CC1120] transition-colors flex items-center gap-1.5 font-sans whitespace-nowrap"
+            className="inline-flex items-center gap-2 text-sm text-[#1A1917] hover:text-[#CC1120] transition-colors font-semibold whitespace-nowrap"
           >
-            All ministries
-            <ArrowRight size={13} aria-hidden="true" />
+            Explore ministries <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </div>
 
-        {/* Ministry grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {PLACEHOLDER_MINISTRIES.map((ministry) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {MINISTRIES.map((ministry) => (
             <Link
               key={ministry.id}
               href={ministry.href}
-              className="group p-6 bg-[#F2F1EB] hover:bg-[#FAF9F6] border border-transparent hover:border-[#E8E7E1] rounded-sm transition-all duration-200 space-y-3"
+              className={`group block ${ministry.featured ? "sm:col-span-2 lg:col-span-2" : ""}`}
               aria-label={`${ministry.name} — learn more`}
             >
-              <span className="text-3xl" role="img" aria-hidden="true">
-                {ministry.icon}
-              </span>
-              <h3 className="font-sans font-semibold text-[#1A1917] text-sm group-hover:text-[#CC1120] transition-colors">
-                {ministry.name}
-              </h3>
-              <p className="text-xs text-[#6B6A65] leading-relaxed line-clamp-3">
-                {ministry.description}
-              </p>
-              <p className="text-xs text-[#CC1120] font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
-                Learn more <ArrowRight size={11} aria-hidden="true" />
-              </p>
+              <div className={`relative overflow-hidden bg-[#E8E7E1] ${ministry.featured ? "aspect-[16/9]" : "aspect-[4/5]"}`}>
+                <Image
+                  src={ministry.image}
+                  alt={ministry.imageAlt}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  sizes={ministry.featured ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 1024px) 50vw, 25vw"}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 text-white">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/75 mb-2">
+                    {ministry.featured ? "Children & Families" : "Get Connected"}
+                  </p>
+                  <h3 className="font-display text-2xl sm:text-3xl font-semibold leading-tight">
+                    {ministry.name}
+                  </h3>
+                  <p className="text-sm text-white/80 leading-relaxed mt-2 max-w-md">
+                    {ministry.description}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider mt-4 group-hover:gap-3 transition-all">
+                    Learn more <ArrowRight size={13} aria-hidden="true" />
+                  </span>
+                </div>
+              </div>
             </Link>
           ))}
         </div>
-
-        {/* Note: these are placeholder items pending leadership confirmation */}
+        <p className="text-xs text-[#8C8B85] mt-5">
+          Ministry information is being updated. Contact the church for current details.
+        </p>
       </div>
     </section>
   );
 }
-
