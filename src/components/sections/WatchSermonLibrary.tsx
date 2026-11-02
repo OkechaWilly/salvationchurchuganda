@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ArrowUpRight, ChevronDown, Play, Search } from "lucide-react";
+import { ChevronDown, Play, Search, X } from "lucide-react";
 
 type Sermon = {
   id: string;
@@ -24,6 +24,7 @@ function formatDate(value: string) {
 export function WatchSermonLibrary() {
   const [videos, setVideos] = useState<Sermon[]>([]);
   const [activeVideo, setActiveVideo] = useState<Sermon | null>(null);
+  const [previewVideo, setPreviewVideo] = useState<Sermon | null>(null);
   const [query, setQuery] = useState("");
   const [sortNewest, setSortNewest] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -172,7 +173,7 @@ export function WatchSermonLibrary() {
               <button
                 key={video.id}
                 type="button"
-                onClick={() => { setActiveVideo(video); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                onClick={() => setPreviewVideo(video)}
                 className="text-left group flex flex-col space-y-2.5"
                 aria-label={`Play ${video.title}`}
               >
@@ -207,17 +208,7 @@ export function WatchSermonLibrary() {
             ))}
           </div>
 
-          <div className="border-t border-gray-100 pt-8 flex justify-end">
-            <a
-              href="https://www.youtube.com/@salvationchurchug"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-gray-700 hover:text-[#CC1120]"
-            >
-              Visit the church channel <ArrowUpRight size={14} />
-            </a>
-          </div>
-        </div>
+     </div>
       </main>
     </div>
   );
