@@ -17,6 +17,8 @@ export const CHURCH_LOCATION = {
 export const CHURCH_CONTACT = {
   phone: "+256 774 707220",
   phoneTel: "+256774707220",
+  alternatePhone: "+256 780 936550",
+  alternatePhoneTel: "+256780936550",
   // email: "[PENDING — awaiting leadership confirmation]",
 };
 
@@ -35,7 +37,6 @@ export const SERMON_YOUTUBE_CHANNEL_ID = ""; // Fill in after confirmation
 
 export const NAV_LINKS = [
   { label: "About", href: "/about" },
-  { label: "Plan Your Visit", href: "/visit" },
   { label: "Watch & Listen", href: "/watch" },
   { label: "Ministries", href: "/ministries" },
   { label: "Events", href: "/events" },
