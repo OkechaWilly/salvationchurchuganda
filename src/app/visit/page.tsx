@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Clock, Phone, ChevronDown, CheckCircle2 } from "lucide-react";
+import { MapPin, Clock, Phone, ChevronDown } from "lucide-react";
 import { CHURCH_LOCATION, CHURCH_CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Plan Your Visit",
   description:
-    "Everything you need to know before your first visit to Salvation Church Uganda — location, service times, parking, children's ministry and what to expect.",
+    "Plan your first visit to Salvation Church Uganda — find our location, Sunday service information and details about Sunday School for little children.",
 };
 
 const FAQ_ITEMS = [
@@ -17,26 +17,25 @@ const FAQ_ITEMS = [
   },
   {
     q: "How long is the Sunday service?",
-    a: "Our Sunday services typically run between 90 minutes and 2 hours, including vibrant worship and the practical biblical message.",
+    a: "Please contact the church for the current service schedule and details about the length of each gathering.",
   },
   {
-    q: "Is there a dedicated programme for children?",
-    a: "Yes! We have an engaging children's ministry where kids learn the Bible, sing, and participate in fun, faith-building activities with caring leaders.",
+    q: "Is there a programme for children?",
+    a: "Yes. Salvation Church Uganda has a separate Sunday School programme for little children while the main church service is taking place. Please contact the church for details about the programme and arrangements.",
   },
   {
     q: "Where do I park?",
-    a: "We have dedicated parking marshals along the church perimeter in Namulanda to guide you smoothly as soon as you arrive.",
+    a: "Please contact the church team for current parking information before your visit.",
   },
   {
     q: "Do I need to register before attending?",
-    a: "No registration is needed! Simply show up and our hospitality team will meet you at the entrance with a warm welcome.",
+    a: "Please get in touch with the church if you have any questions before coming. The team will be happy to assist.",
   },
 ];
 
 export default function VisitPage() {
   return (
     <>
-      {/* Page hero */}
       <div className="bg-[#FAF9F6] border-b border-stone-200 pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="container-content text-center space-y-4">
           <p className="eyebrow text-[#CC1120] tracking-[0.2em]">We&apos;re Expecting You</p>
@@ -50,7 +49,6 @@ export default function VisitPage() {
         </div>
       </div>
 
-      {/* Location + Times */}
       <section
         id="location"
         className="section-padding bg-white border-b border-stone-200"
@@ -81,7 +79,6 @@ export default function VisitPage() {
                 </div>
               </div>
 
-              {/* Service times */}
               <div id="service-times" className="space-y-3">
                 <div className="flex items-start gap-3.5 bg-[#FAF9F6] p-6 rounded-2xl border border-stone-200">
                   <Clock size={22} className="text-[#CC1120] mt-0.5 flex-shrink-0" aria-hidden="true" />
@@ -90,8 +87,7 @@ export default function VisitPage() {
                       Sunday Services Schedule
                     </h3>
                     <p className="text-sm text-stone-600 leading-relaxed">
-                      Physical morning services and mid-week prayer gatherings in Namulanda.
-                      Call our office for current service times or to connect with our team.
+                      Sunday gatherings take place in Namulanda. Call the church for current service times and details.
                     </p>
                     <a
                       href={`tel:${CHURCH_CONTACT.phoneTel}`}
@@ -105,16 +101,15 @@ export default function VisitPage() {
               </div>
             </div>
 
-            {/* Map / Church Image Embed */}
-            <div className="relative aspect-video lg:aspect-square w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 shadow-sm">
+            <div className="relative aspect-video lg:aspect-square w-full overflow-hidden bg-stone-100 border border-stone-200">
               <Image
                 src="/images/worship-community.jpg"
-                alt="Salvation Church Uganda Fellowship"
+                alt="Illustrative photograph for the church visit section"
                 fill
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
-                <span className="text-xs uppercase tracking-widest text-white/80 font-bold">Campus Location</span>
+                <span className="text-xs uppercase tracking-widest text-white/80 font-bold">Find Us</span>
                 <p className="font-display text-2xl font-semibold">Namulanda, Entebbe Road</p>
               </div>
             </div>
@@ -122,60 +117,48 @@ export default function VisitPage() {
         </div>
       </section>
 
-      {/* Children & Family Section with User's Uploaded Child Prayer Photo */}
       <section
         id="kids"
         className="section-padding bg-[#FAF9F6] border-b border-stone-200"
         aria-labelledby="kids-heading"
       >
         <div className="container-content">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            {/* User's child prayer image */}
-            <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-stone-200">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-6 relative aspect-[4/3] overflow-hidden bg-stone-200">
               <Image
                 src="/images/child-prayer.jpg"
-                alt="Child praying over the Bible at Salvation Church Uganda"
+                alt="Illustrative photograph for the Sunday School section"
                 fill
                 className="object-cover object-top"
               />
-            </div>
-
-            {/* Text description */}
-            <div className="lg:col-span-6 space-y-6">
-              <span className="inline-block px-3.5 py-1 rounded-full bg-[#F5E5E7] text-[#CC1120] text-xs font-bold uppercase tracking-wider">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
+              <span className="absolute bottom-5 left-5 text-xs font-semibold uppercase tracking-[0.18em] text-white">
                 Children &amp; Families
               </span>
-              <h2 id="kids-heading" className="font-display text-3xl sm:text-4xl text-[#1A1917] font-semibold leading-tight">
-                A Loving Environment for Your Children to Flourish
-              </h2>
-              <p className="text-stone-600 leading-relaxed font-sans">
-                At Salvation Church Uganda, we believe the next generation is not just the church of tomorrow, 
-                they are part of the church today. Every Sunday, we provide a warm, safe, and age-tailored space 
-                where children can encounter God&apos;s Word, sing, and make lifelong friends.
-              </p>
-              
-              <div className="space-y-2.5 text-xs font-semibold text-stone-700">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#CC1120]" />
-                  <span>Caring and verified children&apos;s teachers</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#CC1120]" />
-                  <span>Interactive Bible lessons &amp; crafts</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#CC1120]" />
-                  <span>Secure check-in and check-out protocol</span>
-                </div>
-              </div>
             </div>
 
+            <div className="lg:col-span-6 space-y-5">
+              <p className="eyebrow text-[#CC1120]">A place for little ones</p>
+              <h2 id="kids-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917] font-semibold leading-[1.08]">
+                Sunday School
+              </h2>
+              <p className="text-stone-600 leading-relaxed font-sans text-base">
+                While the main church gathers for service, little children have a separate Sunday School programme of their own.
+              </p>
+              <p className="text-stone-600 leading-relaxed font-sans text-sm">
+                Visiting with children? Get in touch with the church team before you arrive and they can share the current Sunday School arrangements with you.
+              </p>
+              <Link
+                href="/connect"
+                className="inline-flex items-center gap-2 bg-[#CC1120] hover:bg-[#A50E1A] text-white font-semibold px-6 py-3.5 transition-colors text-xs uppercase tracking-wider"
+              >
+                Ask about Sunday School <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* What to expect FAQ */}
       <section
         id="what-to-expect"
         className="section-padding bg-white border-b border-stone-200"
@@ -190,11 +173,11 @@ export default function VisitPage() {
               </h2>
             </div>
 
-            <div className="space-y-3" role="list">
+            <div className="space-y-3">
               {FAQ_ITEMS.map((item, i) => (
                 <details
                   key={i}
-                  className="group bg-[#FAF9F6] border border-stone-200 rounded-xl overflow-hidden"
+                  className="group bg-[#FAF9F6] border border-stone-200 overflow-hidden"
                 >
                   <summary className="flex items-center justify-between gap-4 px-6 py-4.5 cursor-pointer list-none font-sans font-bold text-sm text-[#1A1917] hover:text-[#CC1120] transition-colors select-none">
                     {item.q}
@@ -214,19 +197,18 @@ export default function VisitPage() {
         </div>
       </section>
 
-      {/* Final Action CTA */}
       <section className="section-padding-sm bg-[#1A1917] text-white" aria-label="Visit call to action">
         <div className="container-content text-center space-y-4">
           <h2 className="font-display text-3xl sm:text-4xl text-white font-semibold">
-            Ready to join us? We&apos;ll be watching for you.
+            We&apos;d love to welcome you.
           </h2>
           <p className="text-white/70 font-sans text-sm max-w-md mx-auto">
-            Have a question before you come or need assistance with directions? We&apos;d love to help.
+            Have a question before you come or need assistance with directions? Get in touch with our team.
           </p>
           <div className="pt-2">
             <Link
               href="/connect"
-              className="inline-flex items-center gap-2 bg-[#CC1120] hover:bg-[#A50E1A] text-white font-bold uppercase tracking-wider px-7 py-3.5 rounded-full transition-all text-xs shadow-xs"
+              className="inline-flex items-center gap-2 bg-[#CC1120] hover:bg-[#A50E1A] text-white font-bold uppercase tracking-wider px-7 py-3.5 transition-all text-xs"
             >
               Get in Touch with Our Team →
             </Link>
