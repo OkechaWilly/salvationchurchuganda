@@ -23,6 +23,7 @@ export const CHURCH_CONTACT = {
 
 export const CHURCH_SOCIAL = {
   youtube: "https://www.youtube.com/@salvationchurchug",
+  youtubeVideos: "https://www.youtube.com/@salvationchurchug/videos",
   // facebook: "[PENDING]",
   // tiktok: "[PENDING]",
 };
