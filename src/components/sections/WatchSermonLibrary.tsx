@@ -31,6 +31,15 @@ export function WatchSermonLibrary() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    if (!previewVideo) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setPreviewVideo(null);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [previewVideo]);
+
+  useEffect(() => {
     let cancelled = false;
 
     async function loadVideos() {
@@ -84,7 +93,7 @@ export function WatchSermonLibrary() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-7">
             <div className="relative aspect-video w-full bg-black rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.18)]">
-              {activeVideo ? (
+              {activeVideo && !previewVideo ? (
                 <iframe
                   key={activeVideo.id}
                   className="absolute inset-0 h-full w-full"
@@ -96,7 +105,7 @@ export function WatchSermonLibrary() {
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center text-white/70 text-sm">
-                  {loading ? "Loading the latest messages…" : "Featured message unavailable"}
+                  {loading ? "Loading the latest messages…" : previewVideo ? "Video preview open" : "Featured message unavailable"}
                 </div>
               )}
             </div>
