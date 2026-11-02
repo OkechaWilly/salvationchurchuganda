@@ -32,12 +32,12 @@ export default function AboutPage() {
     <>
       <section className="relative bg-[#1A1917] pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
         <div className="container-content relative z-10">
-          <p className="eyebrow text-[#E05A64] mb-5">Our Heart &amp; House</p>
+          <p className="eyebrow text-[#E05A64] mb-5">Come Experience the Difference</p>
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-[#FAF9F6] leading-[0.94] tracking-tight max-w-5xl">
             A community shaped by the presence of Jesus.
           </h1>
           <p className="text-white/65 text-base sm:text-lg leading-relaxed max-w-2xl mt-8">
-            Salvation Church Uganda is a Jesus church in Namulanda, connected by living faith, worship, and a heart to see our nation encounter the hope and love of Christ.
+            We are a Jesus church in Namulanda — a welcoming family connected by living faith, worship, and a heart to see our nation encounter the hope and love of Christ.
           </p>
         </div>
       </section>
@@ -85,7 +85,7 @@ export default function AboutPage() {
         <div className="container-content">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
             <div className="md:col-span-5 relative aspect-[4/5] max-h-[520px] bg-[#E8E7E1] overflow-hidden">
-              <Image src="/images/worship-community.jpg" alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 42vw" />
+              <Image src="/images/worship-community.jpg" alt="The Salvation Church Uganda community gathered in worship" fill className="object-cover" sizes="(max-width: 768px) 100vw, 42vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
               <span className="absolute bottom-5 left-5 text-[10px] uppercase tracking-[0.18em] text-white">Salvation Church Uganda</span>
             </div>
@@ -95,10 +95,10 @@ export default function AboutPage() {
                 Pastor Nijel Rawlins
               </h2>
               <p className="text-sm text-[#6B6A65] leading-relaxed mt-5 max-w-xl">
-                Salvation Church Uganda is led by Pastor Nijel Rawlins. More about the church’s leadership and story will be shared here as the church provides its approved profiles.
+                Salvation Church Uganda is led by Pastor Nijel Rawlins. Our church is a community shaped by worship, the gospel, prayer, and a shared desire to see people encounter the hope and love of Christ.
               </p>
-              <Link href="/connect" className="inline-flex items-center gap-2 text-sm font-semibold text-[#CC1120] mt-7">
-                Get in touch <ArrowUpRight size={15} aria-hidden="true" />
+              <Link href="/about/leadership" className="inline-flex items-center gap-2 text-sm font-semibold text-[#CC1120] mt-7">
+                About our leadership <ArrowUpRight size={15} aria-hidden="true" />
               </Link>
             </div>
           </div>
