@@ -1,120 +1,78 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Play, MapPin, ChevronRight } from "lucide-react";
+import { ArrowUpRight, Play, MapPin } from "lucide-react";
 
 export function HeroSection() {
   return (
     <section
-      className="relative min-h-[90vh] lg:min-h-[96vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] text-white pt-24 pb-16"
+      className="relative isolate min-h-[86svh] lg:min-h-[92svh] flex items-end overflow-hidden bg-[#11100F] text-white pt-28 pb-12 sm:pb-16"
       aria-label="Welcome to Salvation Church Uganda"
     >
-      {/* ── Background: Vibrant, High-Visibility Church Worship Photography ── */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 -z-20">
         <Image
           src="/images/worship-community.jpg"
-          alt="Salvation Church Uganda worship gathering"
+          alt=""
           fill
           priority
-          className="object-cover object-center scale-105"
+          sizes="100vw"
+          className="object-cover object-center"
         />
-        {/* Cinematic dark tint with vignette to guarantee high-contrast text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/60 to-[#0A0A0A]/40" />
-        <div className="absolute inset-0 bg-black/35" />
       </div>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/85 via-black/55 to-black/15" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/65 via-transparent to-black/20" />
 
-      {/* Subtle brand red ambient glow */}
-      <div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-[#CC1120]/25 blur-[160px] pointer-events-none rounded-full z-[1]"
-        aria-hidden="true"
-      />
+      <div className="container-content w-full">
+        <div className="max-w-5xl">
+          <div className="inline-flex items-center gap-3 mb-7">
+            <span className="h-px w-9 bg-[#CC1120]" />
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.24em] text-white/80">
+              Namulanda · Entebbe Road · Uganda
+            </span>
+          </div>
 
-      {/* ── Main Content Container ── */}
-      <div className="relative z-10 container-content max-w-5xl mx-auto flex flex-col items-center text-center px-4">
-        
-        {/* Location Pill */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-black/50 backdrop-blur-md mb-8 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-[#CC1120] animate-pulse" />
-          <span className="text-[11px] font-sans font-bold uppercase tracking-[0.2em] text-[#E8E7E1]">
-            Namulanda · Entebbe Road · Uganda
-          </span>
+          <h1 className="font-display text-[clamp(3.4rem,8.5vw,7.8rem)] leading-[0.91] tracking-[-0.045em] font-medium text-white max-w-5xl">
+            For God.<br />
+            For people.<br />
+            <span className="italic font-normal text-white/75">For Uganda.</span>
+          </h1>
+
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-[minmax(0,34rem)_auto] gap-8 md:items-end">
+            <p className="font-sans text-base sm:text-lg text-white/80 leading-relaxed max-w-xl">
+              A Jesus church in Namulanda — a welcoming family connected by living faith, worship, and a heart to see our nation encounter the hope and love of Christ.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 md:justify-end">
+              <Link
+                href="/visit"
+                className="group inline-flex items-center justify-center gap-3 bg-white text-[#1A1917] hover:bg-[#F2F1EB] font-semibold px-6 py-4 text-sm transition-colors"
+              >
+                Plan your visit
+                <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+              <Link
+                href="/watch"
+                className="group inline-flex items-center justify-center gap-3 border border-white/45 bg-black/15 text-white hover:bg-white/10 font-semibold px-6 py-4 text-sm transition-colors"
+              >
+                <Play size={13} fill="currentColor" />
+                Watch messages
+              </Link>
+            </div>
+          </div>
         </div>
 
-        {/* Big Editorial Statement Header */}
-        <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-white font-semibold leading-[1.02] tracking-tight max-w-4xl mx-auto mb-6 drop-shadow-md">
-          For God. For People.{" "}
-          <span className="italic font-light text-[#D1D0CA] block sm:inline">
-            For Uganda.
-          </span>
-        </h1>
-
-        {/* Sub-headline */}
-        <p className="font-sans text-base sm:text-lg md:text-xl text-[#E8E7E1] max-w-2xl mx-auto leading-relaxed mb-10 font-normal drop-shadow">
-          We are a Jesus church in Namulanda. A welcoming family connected by living faith, 
-          worship, and a heart to see our nation encounter the hope and love of Christ.
-        </p>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto">
+        <div className="mt-14 sm:mt-20 border-t border-white/25 pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="flex items-center gap-2 text-white/75 text-xs">
+            <MapPin size={14} className="text-[#E05A64]" aria-hidden="true" />
+            <span>Namulanda Assembly, Entebbe Road</span>
+          </div>
           <Link
-            href="/visit"
-            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white text-[#1A1917] hover:bg-[#F2F1EB] active:scale-[0.98] font-sans font-semibold px-8 py-4 rounded-full text-sm transition-all shadow-[0_12px_32px_rgba(255,255,255,0.18)]"
+            href="/visit#kids"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] font-semibold text-white/85 hover:text-white transition-colors"
           >
-            <span>Plan Your Visit</span>
-            <ArrowUpRight size={16} className="text-[#1A1917] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
-
-          <Link
-            href="/watch"
-            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-black/50 hover:bg-black/70 active:scale-[0.98] border border-white/25 text-white font-sans font-semibold px-8 py-4 rounded-full text-sm backdrop-blur-md shadow-xs transition-all"
-          >
-            <Play size={14} className="text-[#CC1120] fill-[#CC1120]" />
-            <span>Watch Messages</span>
+            Sunday School for little ones
+            <ArrowUpRight size={14} aria-hidden="true" />
           </Link>
         </div>
-
-        {/* ── Elevation Church Style Segmented Pathways Bar (Frosted glass over background) ── */}
-        <div className="mt-14 w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-3 text-left">
-          
-          <Link
-            href="/visit"
-            className="group p-5 rounded-2xl bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/15 hover:border-[#CC1120]/50 hover:shadow-lg transition-all flex items-center justify-between"
-          >
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-[#CC1120]">First Time?</p>
-              <h3 className="text-sm font-bold text-white group-hover:text-[#CC1120] transition-colors">I&apos;m New Here</h3>
-              <p className="text-xs text-[#B0AFA9]">Directions, parking, kids &amp; service info</p>
-            </div>
-            <ChevronRight size={16} className="text-white/60 group-hover:text-[#CC1120] group-hover:translate-x-0.5 transition-all" />
-          </Link>
-
-          <Link
-            href="/watch"
-            className="group p-5 rounded-2xl bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/15 hover:border-[#CC1120]/50 hover:shadow-lg transition-all flex items-center justify-between"
-          >
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-[#CC1120]">Online Church</p>
-              <h3 className="text-sm font-bold text-white group-hover:text-[#CC1120] transition-colors">Watch Latest Sermon</h3>
-              <p className="text-xs text-[#B0AFA9]">Stream on-demand &amp; explore series</p>
-            </div>
-            <ChevronRight size={16} className="text-white/60 group-hover:text-[#CC1120] group-hover:translate-x-0.5 transition-all" />
-          </Link>
-
-          <Link
-            href="/connect"
-            className="group p-5 rounded-2xl bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/15 hover:border-[#CC1120]/50 hover:shadow-lg transition-all flex items-center justify-between"
-          >
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-[#CC1120]">Get Connected</p>
-              <h3 className="text-sm font-bold text-white group-hover:text-[#CC1120] transition-colors">Need Prayer?</h3>
-              <p className="text-xs text-[#B0AFA9]">Our pastoral team is standing by with you</p>
-            </div>
-            <ChevronRight size={16} className="text-white/60 group-hover:text-[#CC1120] group-hover:translate-x-0.5 transition-all" />
-          </Link>
-
-        </div>
-
       </div>
-
     </section>
   );
 }
