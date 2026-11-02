@@ -35,12 +35,12 @@ export default function WatchPage() {
               </h2>
             </div>
             <a
-              href={CHURCH_SOCIAL.youtube}
+              href={CHURCH_SOCIAL.youtubeVideos}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-[#1A1917] hover:text-[#CC1120]"
             >
-              Visit YouTube <ArrowUpRight size={15} aria-hidden="true" />
+              Sermon archive <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </div>
 
@@ -55,7 +55,7 @@ export default function WatchPage() {
               />
               <div className="absolute inset-0 bg-black/25" />
               <a
-                href={CHURCH_SOCIAL.youtube}
+                href={CHURCH_SOCIAL.youtubeVideos}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit the Salvation Church Uganda YouTube channel to watch messages"
@@ -86,13 +86,13 @@ export default function WatchPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 self-start bg-[#1A1917] hover:bg-[#CC1120] text-white font-semibold text-xs uppercase tracking-[0.12em] px-5 py-4 mt-7 transition-colors"
               >
-                Watch messages <ArrowUpRight size={14} aria-hidden="true" />
+                Browse sermon archive <ArrowUpRight size={14} aria-hidden="true" />
               </a>
             </div>
           </article>
 
           <p className="text-xs text-[#8C8B85] mt-6">
-            More messages will appear here as the church shares confirmed sermon titles and video links.
+            Explore the church’s YouTube sermon archive for more messages, teachings and recorded services.
           </p>
         </div>
       </section>
