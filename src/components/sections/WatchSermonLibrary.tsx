@@ -135,7 +135,7 @@ export function WatchSermonLibrary() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#CC1120] mb-2">
-                From our YouTube channel
+                Salvation Church Uganda
               </p>
               <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-black">
                 Recent messages
