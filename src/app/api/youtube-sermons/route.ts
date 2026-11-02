@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 
-export const revalidate = 3600;
-
 // Public RSS feeds: no YouTube API key or exposed credentials required.
 const PLAYLIST_IDS = [
   "PLSB9Ow_MK0JM", // Marriage Sermon Series
