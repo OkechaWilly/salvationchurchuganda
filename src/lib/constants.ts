@@ -6,12 +6,11 @@ export const CHURCH_NAME = "Salvation Church Uganda";
 export const CHURCH_TAGLINE = "A community of believers, rooted in faith, serving Uganda.";
 
 export const CHURCH_LOCATION = {
-  address: "Namulanda, Entebbe Road",
-  city: "Uganda",
-  googleMapsUrl:
-    "https://maps.google.com/?q=Namulanda+Entebbe+Road+Uganda",
+  address: "Namulanda, near Kajjansi / Entebbe Road",
+  city: "Wakiso District, Uganda",
+  googleMapsUrl: "https://maps.app.goo.gl/VqWqWTp2c9S4AYq89",
   embedUrl:
-    "https://maps.google.com/maps?q=Namulanda+Entebbe+Road+Uganda&output=embed",
+    "https://maps.google.com/maps?q=Namulanda+near+Kajjansi+Entebbe+Road+Uganda&output=embed",
 };
 
 export const CHURCH_CONTACT = {
