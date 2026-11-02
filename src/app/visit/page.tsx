@@ -38,13 +38,12 @@ export default function VisitPage() {
     <>
       <div className="bg-[#FAF9F6] border-b border-stone-200 pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="container-content text-center space-y-4">
-          <p className="eyebrow text-[#CC1120] tracking-[0.2em]">We&apos;re Expecting You</p>
+          <p className="eyebrow text-[#CC1120] tracking-[0.2em]">Come Experience the Difference</p>
           <h1 className="font-display text-4xl sm:text-6xl text-[#1A1917] font-semibold tracking-tight">
             Plan Your Visit
           </h1>
           <p className="text-stone-600 text-lg max-w-xl mx-auto font-sans leading-relaxed">
-            Taking that first step is the hardest part. We want to make the rest
-            as seamless and welcoming as possible.
+            Join us in Namulanda for a Sunday gathering. Whether you are visiting for the first time or looking for a church community, we would be glad to welcome you.
           </p>
         </div>
       </div>
@@ -87,7 +86,7 @@ export default function VisitPage() {
                       Sunday Services Schedule
                     </h3>
                     <p className="text-sm text-stone-600 leading-relaxed">
-                      Sunday gatherings take place in Namulanda. Call the church for current service times and details.
+                      We have morning and midday Sunday gatherings. Please call the church for the current start times.
                     </p>
                     <a
                       href={`tel:${CHURCH_CONTACT.phoneTel}`}
@@ -104,7 +103,7 @@ export default function VisitPage() {
             <div className="relative aspect-video lg:aspect-square w-full overflow-hidden bg-stone-100 border border-stone-200">
               <Image
                 src="/images/worship-community.jpg"
-                alt="Illustrative photograph for the church visit section"
+                alt="Salvation Church Uganda gathering"
                 fill
                 className="object-cover"
               />
@@ -127,7 +126,7 @@ export default function VisitPage() {
             <div className="lg:col-span-6 relative aspect-[4/3] overflow-hidden bg-stone-200">
               <Image
                 src="/images/child-prayer.jpg"
-                alt="Illustrative photograph for the Sunday School section"
+                alt="Children at a church gathering"
                 fill
                 className="object-cover object-top"
               />
