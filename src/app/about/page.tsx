@@ -1,95 +1,121 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Salvation Church Uganda — our story, our beliefs, and the team leading our community.",
+    "Discover the heart and community of Salvation Church Uganda in Namulanda, Entebbe Road.",
 };
+
+const VALUES = [
+  {
+    number: "01",
+    title: "Authentic Worship",
+    text: "Gathering in worship and making space to encounter the presence of God.",
+  },
+  {
+    number: "02",
+    title: "Next Generation & Families",
+    text: "Making room for children, young people and families in the life of the church.",
+  },
+  {
+    number: "03",
+    title: "The Word & Prayer",
+    text: "Growing through practical gospel teaching, Scripture and prayer.",
+  },
+];
 
 export default function AboutPage() {
   return (
     <>
-      {/* Page hero */}
-      <div className="bg-[#1A1917] pt-32 pb-14 md:pt-40 md:pb-16">
-        <div className="container-content text-center space-y-4">
-          <p className="eyebrow text-[#CC1120]">Our Story</p>
-          <h1 className="font-display text-display-xl text-[#FAF9F6]">
-            About Salvation Church Uganda
+      <section className="relative bg-[#1A1917] pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+        <div className="container-content relative z-10">
+          <p className="eyebrow text-[#E05A64] mb-5">Our Heart &amp; House</p>
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-[#FAF9F6] leading-[0.94] tracking-tight max-w-5xl">
+            A community shaped by the presence of Jesus.
           </h1>
+          <p className="text-white/65 text-base sm:text-lg leading-relaxed max-w-2xl mt-8">
+            Salvation Church Uganda is a Jesus church in Namulanda, connected by living faith, worship, and a heart to see our nation encounter the hope and love of Christ.
+          </p>
         </div>
-      </div>
+      </section>
 
-      {/* Mission / Vision */}
       <section className="section-padding bg-[#FAF9F6]" aria-labelledby="mission-heading">
         <div className="container-content">
-          <div className="max-w-3xl space-y-8">
-            <div>
-              <p className="eyebrow mb-3">Who We Are</p>
-              <h2 id="mission-heading" className="font-display text-display-md text-[#1A1917] mb-4">
-                Our Mission &amp; Vision
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            <div className="lg:col-span-4">
+              <p className="eyebrow mb-4">Why we are here</p>
+              <h2 id="mission-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917] leading-[1.05]">
+                Our purpose.
               </h2>
-              <div className="space-y-4 text-[#44433F] text-base leading-relaxed">
-                <p>
-                  Salvation Church Uganda is a vibrant community of believers in
-                  Namulanda, along the Entebbe Road, committed to building strong
-                  families, growing in biblical truth, and serving our city and
-                  nation.
-                </p>
-                <p className="text-[#8C8B85] text-sm border-l-2 border-[#E8E7E1] pl-4">
-                  [Official mission and vision statement — pending leadership
-                  approval. Please provide the approved wording before this
-                  section goes live.]
-                </p>
-              </div>
             </div>
-
-            {/* Beliefs placeholder */}
-            <div className="bg-[#F2F1EB] rounded-sm p-6 border border-[#E8E7E1]">
-              <h3 className="font-sans font-semibold text-[#1A1917] text-sm mb-2">
-                What We Believe
-              </h3>
-              <p className="text-sm text-[#8C8B85]">
-                [Statement of beliefs / doctrine — pending leadership confirmation.
-                This section will detail the core theological convictions of
-                Salvation Church Uganda.]
+            <div className="lg:col-span-8">
+              <p className="font-display text-3xl sm:text-4xl lg:text-5xl text-[#1A1917] leading-[1.15]">
+                “We exist to be a community where anyone can experience the grace, truth, and transforming presence of Jesus.”
               </p>
-            </div>
-
-            {/* Leadership placeholder */}
-            <div>
-              <h3 className="font-display text-display-sm text-[#1A1917] mb-6">
-                Our Leadership
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {/* Pastor card — placeholder */}
-                <div className="flex items-start gap-4 p-5 bg-[#F2F1EB] rounded-sm border border-[#E8E7E1]">
-                  <div className="w-14 h-14 rounded-full bg-[#E8E7E1] flex items-center justify-center flex-shrink-0">
-                    <svg className="w-7 h-7 text-[#B0AFA9]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-sans font-semibold text-sm text-[#1A1917]">
-                      Pastor Nijel Rawlins
-                    </p>
-                    <p className="text-xs text-[#CC1120] mb-2">Lead Pastor</p>
-                    <p className="text-xs text-[#8C8B85]">
-                      [Bio — awaiting pastor&apos;s approved biography and headshot]
-                    </p>
-                  </div>
-                </div>
-                {/* Additional staff placeholder */}
-                <div className="flex items-center justify-center p-5 bg-[#F2F1EB] rounded-sm border border-[#E8E7E1] border-dashed">
-                  <p className="text-xs text-[#B0AFA9] text-center">
-                    [Additional leadership — pending confirmation]
-                  </p>
-                </div>
-              </div>
+              <p className="text-sm text-[#8C8B85] mt-6">The heart of Salvation Church Uganda</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section-padding bg-white border-y border-[#E8E7E1]" aria-labelledby="values-heading">
+        <div className="container-content">
+          <div className="max-w-2xl mb-12">
+            <p className="eyebrow mb-3">What matters to us</p>
+            <h2 id="values-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917] leading-tight">
+              The life we share.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {VALUES.map((value) => (
+              <article key={value.number} className="border-t border-[#D8D5CC] pt-5">
+                <p className="text-xs tracking-[0.18em] text-[#CC1120] font-semibold">{value.number}</p>
+                <h3 className="font-display text-2xl sm:text-3xl text-[#1A1917] mt-5">{value.title}</h3>
+                <p className="text-sm text-[#6B6A65] leading-relaxed mt-3">{value.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding bg-[#F2F1EB]" aria-labelledby="leadership-heading">
+        <div className="container-content">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
+            <div className="md:col-span-5 relative aspect-[4/5] max-h-[520px] bg-[#E8E7E1] overflow-hidden">
+              <Image src="/images/worship-community.jpg" alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 42vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
+              <span className="absolute bottom-5 left-5 text-[10px] uppercase tracking-[0.18em] text-white">Salvation Church Uganda</span>
+            </div>
+            <div className="md:col-span-7">
+              <p className="eyebrow mb-4">Our leadership</p>
+              <h2 id="leadership-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917] leading-tight">
+                Pastor Nijel Rawlins
+              </h2>
+              <p className="text-sm text-[#6B6A65] leading-relaxed mt-5 max-w-xl">
+                Salvation Church Uganda is led by Pastor Nijel Rawlins. More about the church’s leadership and story will be shared here as the church provides its approved profiles.
+              </p>
+              <Link href="/connect" className="inline-flex items-center gap-2 text-sm font-semibold text-[#CC1120] mt-7">
+                Get in touch <ArrowUpRight size={15} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding-sm bg-[#1A1917] text-white">
+        <div className="container-content flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div>
+            <p className="eyebrow text-[#E05A64] mb-2">Come and be part of it</p>
+            <h2 className="font-display text-3xl sm:text-4xl text-white">We would love to welcome you.</h2>
+          </div>
+          <Link href="/visit" className="inline-flex items-center gap-2 bg-white text-[#1A1917] px-6 py-4 text-sm font-semibold hover:bg-[#F2F1EB] transition-colors">
+            Plan your visit <ArrowUpRight size={15} aria-hidden="true" />
+          </Link>
         </div>
       </section>
     </>
   );
 }
-
