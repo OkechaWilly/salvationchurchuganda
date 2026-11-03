@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
-
 const CHANNEL_ID = "UCR0LiLT-5NUp4OM5xL2I7ig";
 const UPLOADS_PLAYLIST_ID = "UU" + CHANNEL_ID.slice(2);
 const MAX_LOOKUP_VIDEOS = 30;
