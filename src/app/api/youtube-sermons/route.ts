@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 const CHANNEL_ID = "UCR0LiLT-5NUp4OM5xL2I7ig";
 const UPLOADS_PLAYLIST_ID = "UU" + CHANNEL_ID.slice(2);
 const MAX_LOOKUP_VIDEOS = 30;
@@ -17,6 +19,40 @@ type Sermon = {
   durationSeconds?: number;
 };
 
+function decodeXml(value: string) {
+  return value
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+function readTag(source: string, tag: string) {
+  const opening = "<" + tag;
+  const start = source.indexOf(">", source.indexOf(opening));
+  const end = source.indexOf("</" + tag + ">", start + 1);
+  if (start < 0 || end < 0) return "";
+  return source.slice(start + 1, end).trim();
+}
+
+function parseFeed(xml: string): Sermon[] {
+  return xml.split("<entry>").slice(1).map((entry) => {
+    const id = readTag(entry, "yt:videoId");
+    const title = decodeXml(readTag(entry, "title"));
+    const publishedAt = readTag(entry, "published");
+    const channelTitle = decodeXml(readTag(entry, "name")) || "Salvation Church Uganda";
+    if (!id || !title || !publishedAt) return null;
+    return {
+      id,
+      title,
+      publishedAt,
+      thumbnail: "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
+      channelTitle,
+    };
+  }).filter((video): video is Sermon => video !== null);
+}
+
 function parseIsoDuration(value: string) {
   const match = value.match(/^PT(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?$/);
   if (!match) return 0;
@@ -32,7 +68,7 @@ async function getRecentUploads(apiKey: string): Promise<Sermon[]> {
   url.searchParams.set("maxResults", String(MAX_LOOKUP_VIDEOS));
   url.searchParams.set("key", apiKey);
 
-  const response = await fetch(url, { next: { revalidate: 3600 } });
+  const response = await fetch(url, { cache: "no-store" });
   if (!response.ok) throw new Error("YouTube uploads lookup failed");
 
   const data = (await response.json()) as {
@@ -48,32 +84,37 @@ async function getRecentUploads(apiKey: string): Promise<Sermon[]> {
         };
         resourceId?: { videoId?: string };
       };
-      contentDetails?: { videoId?: string };
+      contentDetails?: { videoId?: string; videoPublishedAt?: string };
     }>;
   };
 
-  return (data.items ?? [])
-    .map((item) => {
-      const snippet = item.snippet;
-      const id = snippet?.resourceId?.videoId ?? item.contentDetails?.videoId;
-      const title = snippet?.title;
-      const publishedAt = snippet?.publishedAt;
-      if (!id || !title || !publishedAt) return null;
-
-      return {
-        id,
-        title,
-        publishedAt,
-        thumbnail:
-          snippet.thumbnails?.high?.url
-          ?? snippet.thumbnails?.medium?.url
-          ?? snippet.thumbnails?.default?.url
-          ?? "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
-        channelTitle: snippet.channelTitle ?? "Salvation Church Uganda",
-      };
-    })
-    .filter((video): video is Sermon => video !== null)
+  return (data.items ?? []).map((item) => {
+    const snippet = item.snippet;
+    const id = snippet?.resourceId?.videoId ?? item.contentDetails?.videoId;
+    const title = snippet?.title;
+    const publishedAt = snippet?.publishedAt ?? item.contentDetails?.videoPublishedAt;
+    if (!id || !title || !publishedAt) return null;
+    return {
+      id,
+      title,
+      publishedAt,
+      thumbnail: snippet.thumbnails?.high?.url
+        ?? snippet.thumbnails?.medium?.url
+        ?? snippet.thumbnails?.default?.url
+        ?? "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
+      channelTitle: snippet.channelTitle ?? "Salvation Church Uganda",
+    };
+  }).filter((video): video is Sermon => video !== null)
     .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
+}
+
+async function getRssFallback(): Promise<Sermon[]> {
+  const url = "https://www.youtube.com/feeds/videos.xml?channel_id=" + CHANNEL_ID;
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) throw new Error("YouTube channel feed unavailable");
+  return parseFeed(await response.text()).sort(
+    (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt)
+  );
 }
 
 async function addDurations(videos: Sermon[], apiKey: string) {
@@ -85,7 +126,7 @@ async function addDurations(videos: Sermon[], apiKey: string) {
   url.searchParams.set("id", ids.join(","));
   url.searchParams.set("key", apiKey);
 
-  const response = await fetch(url, { next: { revalidate: 3600 } });
+  const response = await fetch(url, { cache: "no-store" });
   if (!response.ok) throw new Error("YouTube duration lookup failed");
 
   const data = (await response.json()) as {
@@ -98,15 +139,13 @@ async function addDurations(videos: Sermon[], apiKey: string) {
     ])
   );
 
-  return videos
-    .map((video) => ({
-      ...video,
-      durationSeconds: durations.get(video.id) ?? 0,
-    }))
-    .filter((video) =>
-      video.durationSeconds > MIN_SERMON_DURATION_SECONDS
-      && !EXCLUDED_VIDEO_IDS.has(video.id)
-    );
+  return videos.map((video) => ({
+    ...video,
+    durationSeconds: durations.get(video.id) ?? 0,
+  })).filter((video) =>
+    video.durationSeconds > MIN_SERMON_DURATION_SECONDS
+    && !EXCLUDED_VIDEO_IDS.has(video.id)
+  );
 }
 
 export async function GET() {
@@ -119,11 +158,14 @@ export async function GET() {
       );
     }
 
-    // Use the channel's uploads playlist so we can inspect more than the
-    // 15 entries exposed by the public YouTube RSS feed.
-    const recentVideos = await getRecentUploads(apiKey);
-    const videos = await addDurations(recentVideos, apiKey);
+    let recentVideos = await getRecentUploads(apiKey);
+    // Keep the previously working RSS path as a safety net if playlist lookup
+    // returns no usable entries, rather than silently showing an empty library.
+    if (recentVideos.length === 0) {
+      recentVideos = await getRssFallback();
+    }
 
+    const videos = await addDurations(recentVideos.slice(0, MAX_LOOKUP_VIDEOS), apiKey);
     return NextResponse.json(
       { videos },
       { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } }
