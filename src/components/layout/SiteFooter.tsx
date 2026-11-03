@@ -36,7 +36,6 @@ const FOOTER_SECTIONS = [
       { label: "Watch Sermons", href: "/watch" },
       { label: "Prayer Requests", href: "/connect#prayer" },
       { label: "Contact Us", href: "/connect" },
-      { label: "Give", href: "/give" },
     ],
   },
 ];
