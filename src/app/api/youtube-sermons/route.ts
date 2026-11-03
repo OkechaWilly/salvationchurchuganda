@@ -163,7 +163,15 @@ export async function GET() {
       recentVideos = await getRssFallback();
     }
 
-    const videos = await addDurations(recentVideos.slice(0, MAX_LOOKUP_VIDEOS), apiKey);
+    let videos = await addDurations(recentVideos.slice(0, MAX_LOOKUP_VIDEOS), apiKey);
+
+    // If the expanded playlist lookup yields no qualifying sermons, retry
+    // the known-working RSS feed so the public library never silently empties.
+    if (videos.length === 0) {
+      const rssVideos = await getRssFallback();
+      videos = await addDurations(rssVideos, apiKey);
+    }
+
     return NextResponse.json(
       { videos },
       { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } }
