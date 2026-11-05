@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Clock, Phone, ChevronDown } from "lucide-react";
-import { CHURCH_LOCATION, CHURCH_CONTACT } from "@/lib/constants";
+import { CHURCH_LOCATION, CHURCH_CONTACT, WEEKLY_GATHERINGS, MONTHLY_GATHERINGS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Plan Your Visit",
@@ -17,7 +17,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "How long is the Sunday service?",
-    a: "Please contact the church for the current service schedule and details about the length of each gathering.",
+    a: "Sunday Service runs from 10:00 AM to 1:00 PM. The church also gathers during the week for Bible Study and prayer. See the gathering schedule on this page for details.",
   },
   {
     q: "Is there a programme for children?",
@@ -86,7 +86,7 @@ export default function VisitPage() {
                       Sunday Services Schedule
                     </h3>
                     <p className="text-sm text-stone-600 leading-relaxed">
-                      We have morning and midday Sunday gatherings. Please call the church for the current start times.
+                      Sunday Service takes place every Sunday from 10:00 AM to 1:00 PM. You are welcome to join us.
                     </p>
                     <a
                       href={`tel:${CHURCH_CONTACT.phoneTel}`}
@@ -96,6 +96,30 @@ export default function VisitPage() {
                       {CHURCH_CONTACT.phone}
                     </a>
                   </div>
+                </div>
+              </div>
+              <div className="space-y-8">
+                <div>
+                  <h3 className="font-display text-2xl text-[#1A1917] font-semibold mb-3">Weekly Gatherings</h3>
+                  <div className="divide-y divide-stone-200 border-y border-stone-200">
+                    {WEEKLY_GATHERINGS.map((g) => (
+                      <div key={g.day} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3">
+                        <div><p className="text-xs uppercase tracking-wider text-stone-500">{g.day}</p><p className="font-semibold text-sm text-[#1A1917]">{g.name}</p></div>
+                        <p className="text-sm text-stone-600 tabular-nums">{g.time}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl text-[#1A1917] font-semibold mb-3">Monthly Gatherings</h3>
+                  <div className="divide-y divide-stone-200 border-y border-stone-200">
+                    {MONTHLY_GATHERINGS.map((g) => (
+                      <div key={g.name} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3">
+                        <p className="font-semibold text-sm text-[#1A1917]">{g.name}</p><p className="text-xs text-stone-500">{g.frequency}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-stone-500 mt-3">For details about monthly gathering times, please contact the church.</p>
                 </div>
               </div>
             </div>
