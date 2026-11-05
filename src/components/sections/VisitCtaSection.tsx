@@ -35,7 +35,7 @@ export function VisitCtaSection() {
                 <Clock size={17} className="text-[#CC1120] mt-1 shrink-0" aria-hidden="true" />
                 <div>
                   <p className="text-sm font-semibold text-[#1A1917]">Sunday gatherings</p>
-                  <p className="text-xs text-[#8C8B85] mt-1">Morning &amp; midday. Call for current times.</p>
+                  <p className="text-xs text-[#8C8B85] mt-1">10:00 AM – 1:00 PM</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 sm:col-span-2">
