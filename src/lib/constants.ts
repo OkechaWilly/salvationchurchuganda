@@ -28,10 +28,20 @@ export const CHURCH_SOCIAL = {
   // tiktok: "[PENDING]",
 };
 
-// Service times — PLACEHOLDER: must be confirmed by leadership
-export const SERVICE_TIMES: { day: string; time: string; label: string }[] = [
-  // { day: "Sunday", time: "TBD", label: "Main Service" },
-];
+// Confirmed recurring church gatherings
+export const WEEKLY_GATHERINGS = [
+  { day: "Sunday", name: "Sunday Service", time: "10:00 AM – 1:00 PM" },
+  { day: "Wednesday", name: "Bible Study", time: "6:00 PM – 8:00 PM" },
+  { day: "Thursday", name: "Intercession Prayer", time: "6:00 PM – 8:00 PM" },
+  { day: "Friday", name: "Corporate Prayer", time: "6:00 PM – 7:00 PM" },
+] as const;
+
+export const MONTHLY_GATHERINGS = [
+  { frequency: "Every first Saturday", name: "Evangelism" },
+  { frequency: "Every second Saturday", name: "Baptism" },
+  { frequency: "Every second Sunday", name: "Membership" },
+  { frequency: "Every last Friday", name: "Overnight Prayer" },
+] as const;
 
 export const SERMON_YOUTUBE_CHANNEL_ID = ""; // Fill in after confirmation
 
