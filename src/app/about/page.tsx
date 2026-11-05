@@ -30,7 +30,7 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <>
-      <section className="relative isolate flex min-h-[680px] items-end overflow-hidden bg-[#1A1917] text-[#FAF9F6] sm:min-h-[760px] lg:min-h-[820px]">
+      <section className="relative isolate flex min-h-[560px] items-end overflow-hidden bg-[#1A1917] text-[#FAF9F6] sm:min-h-[610px] lg:min-h-[680px]">
         <Image
           src="/images/worship-community.jpg"
           alt="The Salvation Church Uganda community gathered in worship"
@@ -42,7 +42,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 -z-0 bg-gradient-to-r from-[#151412]/90 via-[#151412]/65 to-[#151412]/15" />
         <div className="absolute inset-0 -z-0 bg-gradient-to-t from-[#151412]/75 via-transparent to-[#151412]/20" />
 
-        <div className="container-content relative z-10 w-full pb-16 pt-40 sm:pb-20 sm:pt-48 lg:pb-24">
+        <div className="container-content relative z-10 w-full pb-12 pt-32 sm:pb-14 sm:pt-40 lg:pb-16">
           <div className="max-w-5xl">
             <p className="eyebrow mb-6 text-[#F07A82]">Come Experience the Difference</p>
             <h1 className="max-w-5xl font-display text-5xl font-medium leading-[0.94] tracking-[-0.035em] text-[#FAF9F6] sm:text-6xl md:text-7xl lg:text-[6.5rem]">
@@ -59,7 +59,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-          <p className="mt-14 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/65 sm:mt-20">
+          <p className="mt-9 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/65 sm:mt-12">
             Salvation Church Uganda <span className="mx-2 text-[#F07A82]">/</span> Namulanda
           </p>
         </div>
