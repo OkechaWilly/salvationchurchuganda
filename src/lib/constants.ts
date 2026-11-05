@@ -40,7 +40,7 @@ export const MONTHLY_GATHERINGS = [
   { frequency: "Every first Saturday", name: "Evangelism" },
   { frequency: "Every second Saturday", name: "Baptism" },
   { frequency: "Every second Sunday", name: "Membership" },
-  { frequency: "Every last Friday", name: "Overnight Prayer" },
+  { frequency: "Every last Friday", name: "Overnight" },
 ] as const;
 
 export const SERMON_YOUTUBE_CHANNEL_ID = ""; // Fill in after confirmation
