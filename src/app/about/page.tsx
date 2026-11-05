@@ -30,7 +30,7 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <>
-      <section className="relative isolate flex min-h-[560px] items-end overflow-hidden bg-[#1A1917] text-[#FAF9F6] sm:min-h-[610px] lg:min-h-[680px]">
+      <section className="relative z-10 isolate flex min-h-[560px] items-end bg-[#1A1917] text-[#FAF9F6] sm:min-h-[610px] lg:min-h-[640px]">
         <Image
           src="/images/worship-community.jpg"
           alt="The Salvation Church Uganda community gathered in worship"
@@ -39,13 +39,13 @@ export default function AboutPage() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 -z-0 bg-gradient-to-r from-[#151412]/90 via-[#151412]/65 to-[#151412]/15" />
-        <div className="absolute inset-0 -z-0 bg-gradient-to-t from-[#151412]/75 via-transparent to-[#151412]/20" />
+        <div className="absolute inset-0 -z-0 bg-gradient-to-r from-[#151412]/95 via-[#151412]/75 to-[#151412]/35" />
+        <div className="absolute inset-0 -z-0 bg-gradient-to-t from-[#151412]/80 via-transparent to-[#151412]/20" />
 
         <div className="container-content relative z-10 w-full pb-12 pt-32 sm:pb-14 sm:pt-40 lg:pb-16">
-          <div className="max-w-5xl">
-            <p className="eyebrow mb-6 text-[#F07A82]">Come Experience the Difference</p>
-            <h1 className="max-w-5xl font-display text-5xl font-medium leading-[0.94] tracking-[-0.035em] text-[#FAF9F6] sm:text-6xl md:text-7xl lg:text-[6.5rem]">
+          <div className="max-w-5xl lg:max-w-[68%] lg:pr-5">
+            <p className="eyebrow mb-6 text-[#E05A64]">Come Experience the Difference</p>
+            <h1 className="max-w-5xl font-display text-5xl font-medium leading-[0.94] tracking-[-0.035em] text-[#FAF9F6] sm:text-6xl md:text-7xl lg:text-[5.2rem]">
               A community shaped by the presence of Jesus.
             </h1>
             <div className="mt-8 grid grid-cols-1 gap-6 border-t border-white/25 pt-6 sm:mt-10 sm:grid-cols-12 sm:gap-10 sm:pt-7">
@@ -59,9 +59,21 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-          <p className="mt-9 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/65 sm:mt-12">
-            Salvation Church Uganda <span className="mx-2 text-[#F07A82]">/</span> Namulanda
+          <p className="mt-9 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/65 sm:mt-12 lg:max-w-[68%]">
+            Salvation Church Uganda <span className="mx-2 text-[#E05A64]">/</span> Namulanda
           </p>
+        </div>
+
+        <div className="absolute -bottom-16 right-[max(2rem,calc((100vw-80rem)/2))] z-20 hidden h-[390px] w-[29%] max-w-[350px] border border-[#FAF9F6]/70 bg-[#FAF9F6] p-1.5 shadow-[0_18px_50px_rgba(0,0,0,0.22)] md:block lg:h-[450px] lg:w-[27%]">
+          <div className="relative h-full w-full overflow-hidden bg-[#E8E7E1]">
+            <Image
+              src="/images/child-prayer.jpg"
+              alt="A church prayer moment"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 30vw, 350px"
+            />
+          </div>
         </div>
       </section>
 
