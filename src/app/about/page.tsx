@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -30,51 +30,88 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <>
-      <section className="relative bg-[#1A1917] pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
-        <div className="container-content relative z-10">
-          <p className="eyebrow text-[#E05A64] mb-5">Come Experience the Difference</p>
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-[#FAF9F6] leading-[0.94] tracking-tight max-w-5xl">
-            A community shaped by the presence of Jesus.
-          </h1>
-          <p className="text-white/65 text-base sm:text-lg leading-relaxed max-w-2xl mt-8">
-            We are a Jesus church in Namulanda — a welcoming family connected by living faith, worship, and a heart to see our nation encounter the hope and love of Christ.
-          </p>
+      <section className="relative overflow-hidden bg-[#1A1917] pt-32 text-[#FAF9F6] sm:pt-40">
+        <div className="container-content relative z-10 pb-14 sm:pb-20">
+          <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-8">
+              <p className="eyebrow mb-5 text-[#E05A64]">Come Experience the Difference</p>
+              <h1 className="max-w-5xl font-display text-5xl font-medium leading-[0.94] tracking-[-0.035em] text-[#FAF9F6] sm:text-6xl md:text-7xl lg:text-[6.25rem]">
+                A community shaped by the presence of Jesus.
+              </h1>
+            </div>
+            <div className="lg:col-span-4 lg:pb-2">
+              <p className="max-w-md text-sm leading-7 text-white/65 sm:text-base">
+                We are a Jesus church in Namulanda — a welcoming family connected by living faith, worship, and a heart to see our nation encounter the hope and love of Christ.
+              </p>
+              <a href="#our-heart" className="mt-7 inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/80 transition-colors hover:text-white">
+                Discover who we are <ArrowDown size={14} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative h-[260px] w-full overflow-hidden bg-[#383632] sm:h-[380px] lg:h-[480px]">
+          <Image
+            src="/images/worship-community.jpg"
+            alt="The Salvation Church Uganda community gathered in worship"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/45 via-transparent to-transparent" />
+          <div className="container-content absolute inset-x-0 bottom-6">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/85">
+              Salvation Church Uganda · Namulanda
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="section-padding bg-[#FAF9F6]" aria-labelledby="mission-heading">
+      <section id="our-heart" className="section-padding scroll-mt-20 bg-[#FAF9F6]" aria-labelledby="mission-heading">
         <div className="container-content">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <p className="eyebrow mb-4">Why we are here</p>
-              <h2 id="mission-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917] leading-[1.05]">
-                Our purpose.
+              <h2 id="mission-heading" className="font-display text-4xl leading-[1.04] text-[#1A1917] sm:text-5xl">
+                Our heart.
               </h2>
+              <p className="mt-5 max-w-xs text-sm leading-7 text-[#6B6A65]">
+                At the centre of our church is a simple desire: that people would encounter Jesus and grow in the life of faith.
+              </p>
             </div>
             <div className="lg:col-span-8">
-              <p className="font-display text-3xl sm:text-4xl lg:text-5xl text-[#1A1917] leading-[1.15]">
+              <p className="border-l-2 border-[#CC1120] pl-6 font-display text-3xl leading-[1.16] tracking-[-0.02em] text-[#1A1917] sm:pl-8 sm:text-4xl lg:text-[3.25rem]">
                 “We exist to be a community where anyone can experience the grace, truth, and transforming presence of Jesus.”
               </p>
-              <p className="text-sm text-[#8C8B85] mt-6">The heart of Salvation Church Uganda</p>
+              <p className="mt-7 pl-6 text-[10px] font-bold uppercase tracking-[0.18em] text-[#8C8B85] sm:pl-8">
+                The heart of Salvation Church Uganda
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-white border-y border-[#E8E7E1]" aria-labelledby="values-heading">
+      <section className="section-padding border-y border-[#E8E7E1] bg-white" aria-labelledby="values-heading">
         <div className="container-content">
-          <div className="max-w-2xl mb-12">
-            <p className="eyebrow mb-3">What matters to us</p>
-            <h2 id="values-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917] leading-tight">
-              The life we share.
-            </h2>
+          <div className="mb-12 grid grid-cols-1 gap-5 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-7">
+              <p className="eyebrow mb-3">What matters to us</p>
+              <h2 id="values-heading" className="font-display text-4xl leading-tight text-[#1A1917] sm:text-5xl">
+                The life we share.
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm leading-7 text-[#6B6A65] md:col-span-5 md:justify-self-end">
+              These are important parts of our shared life as a church: worship, faith across generations, the Word of God and prayer.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
             {VALUES.map((value) => (
               <article key={value.number} className="border-t border-[#D8D5CC] pt-5">
-                <p className="text-xs tracking-[0.18em] text-[#CC1120] font-semibold">{value.number}</p>
-                <h3 className="font-display text-2xl sm:text-3xl text-[#1A1917] mt-5">{value.title}</h3>
-                <p className="text-sm text-[#6B6A65] leading-relaxed mt-3">{value.text}</p>
+                <p className="text-[10px] font-bold tracking-[0.2em] text-[#CC1120]">{value.number}</p>
+                <h3 className="mt-6 font-display text-2xl leading-tight text-[#1A1917] sm:text-3xl">{value.title}</h3>
+                <p className="mt-4 max-w-sm text-sm leading-7 text-[#6B6A65]">{value.text}</p>
               </article>
             ))}
           </div>
@@ -83,22 +120,30 @@ export default function AboutPage() {
 
       <section className="section-padding bg-[#F2F1EB]" aria-labelledby="leadership-heading">
         <div className="container-content">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
-            <div className="md:col-span-5 relative aspect-[4/5] max-h-[520px] bg-[#E8E7E1] overflow-hidden">
-              <Image src="/images/worship-community.jpg" alt="The Salvation Church Uganda community gathered in worship" fill className="object-cover" sizes="(max-width: 768px) 100vw, 42vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
-              <span className="absolute bottom-5 left-5 text-[10px] uppercase tracking-[0.18em] text-white">Salvation Church Uganda</span>
+          <div className="grid grid-cols-1 items-center gap-9 md:grid-cols-12 md:gap-14">
+            <div className="relative aspect-[4/5] max-h-[560px] overflow-hidden bg-[#D8D6CF] md:col-span-5">
+              <Image
+                src="/images/worship-community.jpg"
+                alt="Salvation Church Uganda"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 42vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+              <span className="absolute bottom-5 left-5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
+                Our church family
+              </span>
             </div>
-            <div className="md:col-span-7">
+            <div className="md:col-span-7 md:py-8">
               <p className="eyebrow mb-4">Our leadership</p>
-              <h2 id="leadership-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917] leading-tight">
-                Pastor Nijel Rawlins
+              <h2 id="leadership-heading" className="max-w-xl font-display text-4xl leading-[1.04] text-[#1A1917] sm:text-5xl">
+                Led with faith. Built in community.
               </h2>
-              <p className="text-sm text-[#6B6A65] leading-relaxed mt-5 max-w-xl">
+              <p className="mt-6 max-w-xl text-sm leading-7 text-[#6B6A65]">
                 Salvation Church Uganda is led by Pastor Nijel Rawlins. Our church is a community shaped by worship, the gospel, prayer, and a shared desire to see people encounter the hope and love of Christ.
               </p>
-              <Link href="/about/leadership" className="inline-flex items-center gap-2 text-sm font-semibold text-[#CC1120] mt-7">
-                About our leadership <ArrowUpRight size={15} aria-hidden="true" />
+              <Link href="/about/leadership" className="mt-8 inline-flex items-center gap-3 border-b border-[#CC1120] pb-2 text-sm font-semibold text-[#1A1917] transition-colors hover:text-[#CC1120]">
+                Get to know our leadership <ArrowUpRight size={15} aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -106,12 +151,17 @@ export default function AboutPage() {
       </section>
 
       <section className="section-padding-sm bg-[#1A1917] text-white">
-        <div className="container-content flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        <div className="container-content flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="eyebrow text-[#E05A64] mb-2">Come and be part of it</p>
-            <h2 className="font-display text-3xl sm:text-4xl text-white">We would love to welcome you.</h2>
+            <p className="eyebrow mb-2 text-[#E05A64]">Come and be part of it</p>
+            <h2 className="font-display text-3xl leading-tight text-white sm:text-4xl">
+              We would love to welcome you.
+            </h2>
+            <p className="mt-3 max-w-lg text-sm leading-6 text-white/60">
+              Whether you are new to church or looking for a place to grow, there is a place for you here.
+            </p>
           </div>
-          <Link href="/visit" className="inline-flex items-center gap-2 bg-white text-[#1A1917] px-6 py-4 text-sm font-semibold hover:bg-[#F2F1EB] transition-colors">
+          <Link href="/visit" className="inline-flex shrink-0 items-center justify-center gap-3 bg-white px-6 py-4 text-sm font-semibold text-[#1A1917] transition-colors hover:bg-[#F2F1EB]">
             Plan your visit <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
         </div>
