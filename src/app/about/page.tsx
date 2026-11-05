@@ -30,41 +30,38 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[#1A1917] pt-32 text-[#FAF9F6] sm:pt-40">
-        <div className="container-content relative z-10 pb-14 sm:pb-20">
-          <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-8">
-              <p className="eyebrow mb-5 text-[#E05A64]">Come Experience the Difference</p>
-              <h1 className="max-w-5xl font-display text-5xl font-medium leading-[0.94] tracking-[-0.035em] text-[#FAF9F6] sm:text-6xl md:text-7xl lg:text-[6.25rem]">
-                A community shaped by the presence of Jesus.
-              </h1>
-            </div>
-            <div className="lg:col-span-4 lg:pb-2">
-              <p className="max-w-md text-sm leading-7 text-white/65 sm:text-base">
+      <section className="relative isolate flex min-h-[680px] items-end overflow-hidden bg-[#1A1917] text-[#FAF9F6] sm:min-h-[760px] lg:min-h-[820px]">
+        <Image
+          src="/images/worship-community.jpg"
+          alt="The Salvation Church Uganda community gathered in worship"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 -z-0 bg-gradient-to-r from-[#151412]/90 via-[#151412]/65 to-[#151412]/15" />
+        <div className="absolute inset-0 -z-0 bg-gradient-to-t from-[#151412]/75 via-transparent to-[#151412]/20" />
+
+        <div className="container-content relative z-10 w-full pb-16 pt-40 sm:pb-20 sm:pt-48 lg:pb-24">
+          <div className="max-w-5xl">
+            <p className="eyebrow mb-6 text-[#F07A82]">Come Experience the Difference</p>
+            <h1 className="max-w-5xl font-display text-5xl font-medium leading-[0.94] tracking-[-0.035em] text-[#FAF9F6] sm:text-6xl md:text-7xl lg:text-[6.5rem]">
+              A community shaped by the presence of Jesus.
+            </h1>
+            <div className="mt-8 grid grid-cols-1 gap-6 border-t border-white/25 pt-6 sm:mt-10 sm:grid-cols-12 sm:gap-10 sm:pt-7">
+              <p className="max-w-2xl text-sm leading-7 text-white/85 sm:col-span-8 sm:text-base sm:leading-8">
                 We are a Jesus church in Namulanda — a welcoming family connected by living faith, worship, and a heart to see our nation encounter the hope and love of Christ.
               </p>
-              <a href="#our-heart" className="mt-7 inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/80 transition-colors hover:text-white">
-                Discover who we are <ArrowDown size={14} aria-hidden="true" />
-              </a>
+              <div className="sm:col-span-4 sm:flex sm:justify-end sm:self-end">
+                <a href="#our-heart" className="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:text-[#F07A82]">
+                  Discover who we are <ArrowDown size={14} aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="relative h-[260px] w-full overflow-hidden bg-[#383632] sm:h-[380px] lg:h-[480px]">
-          <Image
-            src="/images/worship-community.jpg"
-            alt="The Salvation Church Uganda community gathered in worship"
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/45 via-transparent to-transparent" />
-          <div className="container-content absolute inset-x-0 bottom-6">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/85">
-              Salvation Church Uganda · Namulanda
-            </p>
-          </div>
+          <p className="mt-14 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/65 sm:mt-20">
+            Salvation Church Uganda <span className="mx-2 text-[#F07A82]">/</span> Namulanda
+          </p>
         </div>
       </section>
 
@@ -77,7 +74,7 @@ export default function AboutPage() {
                 Our heart.
               </h2>
               <p className="mt-5 max-w-xs text-sm leading-7 text-[#6B6A65]">
-                At the centre of our church is a simple desire: that people would encounter Jesus and grow in the life of faith.
+                Our purpose is to make room for people to encounter Jesus, grow in faith and share in the life of the church.
               </p>
             </div>
             <div className="lg:col-span-8">
@@ -102,7 +99,7 @@ export default function AboutPage() {
               </h2>
             </div>
             <p className="max-w-sm text-sm leading-7 text-[#6B6A65] md:col-span-5 md:justify-self-end">
-              These are important parts of our shared life as a church: worship, faith across generations, the Word of God and prayer.
+              Our life together is shaped by worship, care for the next generation, the teaching of Scripture and prayer.
             </p>
           </div>
 
