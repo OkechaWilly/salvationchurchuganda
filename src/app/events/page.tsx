@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, CalendarDays } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Clock } from "lucide-react";
+import { WEEKLY_GATHERINGS, MONTHLY_GATHERINGS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Events",
@@ -24,19 +25,32 @@ export default function EventsPage() {
       </section>
 
       <section className="section-padding bg-[#FAF9F6]">
-        <div className="container-content">
-          <div className="max-w-2xl mx-auto text-center py-12 sm:py-20">
-            <div className="w-14 h-14 mx-auto border border-[#D8D5CC] flex items-center justify-center text-[#CC1120]">
-              <CalendarDays size={23} aria-hidden="true" />
+        <div className="container-content space-y-16">
+          <div>
+            <div className="flex items-center gap-3 mb-6"><Clock size={18} className="text-[#CC1120]" aria-hidden="true" /><p className="eyebrow">Every week</p></div>
+            <h2 className="font-display text-3xl sm:text-4xl text-[#1A1917] mb-8">Regular gatherings</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12">
+              {WEEKLY_GATHERINGS.map((g) => (
+                <div key={g.day} className="flex items-center justify-between gap-4 py-5 border-t border-stone-300">
+                  <div><p className="text-xs uppercase tracking-wider text-stone-500">{g.day}</p><h3 className="font-semibold text-lg text-[#1A1917]">{g.name}</h3></div>
+                  <p className="text-sm text-stone-600 tabular-nums text-right">{g.time}</p>
+                </div>
+              ))}
             </div>
-            <p className="eyebrow mt-7 mb-3">Coming up</p>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#1A1917]">New dates will be announced here.</h2>
-            <p className="text-sm sm:text-base text-[#6B6A65] leading-relaxed mt-4">
-              There are no confirmed event listings to share at the moment. For current church updates, please contact the team directly.
-            </p>
-            <Link href="/connect" className="inline-flex items-center gap-2 bg-[#1A1917] text-white hover:bg-[#CC1120] px-6 py-4 text-sm font-semibold mt-8 transition-colors">
-              Contact the church <ArrowUpRight size={15} aria-hidden="true" />
-            </Link>
+          </div>
+          <div>
+            <div className="flex items-center gap-3 mb-6"><CalendarDays size={18} className="text-[#CC1120]" aria-hidden="true" /><p className="eyebrow">Throughout the month</p></div>
+            <h2 className="font-display text-3xl sm:text-4xl text-[#1A1917] mb-8">Monthly gatherings</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12">
+              {MONTHLY_GATHERINGS.map((g) => (
+                <div key={g.name} className="py-5 border-t border-stone-300"><p className="text-xs uppercase tracking-wider text-stone-500">{g.frequency}</p><h3 className="font-semibold text-lg text-[#1A1917] mt-1">{g.name}</h3></div>
+              ))}
+            </div>
+            <p className="text-sm text-stone-500 mt-4">For details about monthly gathering times and upcoming dates, please contact the church team.</p>
+          </div>
+          <div className="border-t border-stone-300 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+            <p className="text-sm text-stone-600 max-w-xl">We would be glad to welcome you. Get in touch if you need more information before attending.</p>
+            <Link href="/connect" className="inline-flex items-center gap-2 bg-[#1A1917] text-white hover:bg-[#CC1120] px-6 py-4 text-sm font-semibold transition-colors shrink-0">Contact the church <ArrowUpRight size={15} aria-hidden="true" /></Link>
           </div>
         </div>
       </section>
