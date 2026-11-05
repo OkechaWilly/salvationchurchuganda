@@ -1,64 +1,73 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Ministries",
   description:
-    "Discover the ministries at Salvation Church Uganda — find your place to belong and serve.",
+    "Discover ways to connect at Salvation Church Uganda, including Sunday School for little children.",
 };
-
-const PLACEHOLDER_MINISTRIES = [
-  { id: "children", name: "Children's Ministry", icon: "👧", desc: "[Description pending]", href: "/ministries/children" },
-  { id: "youth", name: "Youth Ministry", icon: "⚡", desc: "[Description pending]", href: "/ministries/youth" },
-  { id: "women", name: "Women's Ministry", icon: "🌸", desc: "[Description pending]", href: "/ministries/women" },
-  { id: "men", name: "Men's Ministry", icon: "🛡️", desc: "[Description pending]", href: "/ministries/men" },
-];
 
 export default function MinistriesPage() {
   return (
     <>
-      <div className="bg-[#1A1917] pt-32 pb-14 md:pt-40 md:pb-16">
-        <div className="container-content text-center space-y-4">
-          <p className="eyebrow text-[#CC1120]">Get Involved</p>
-          <h1 className="font-display text-display-xl text-[#FAF9F6]">
-            Ministries
+      <section className="bg-[#1A1917] pt-32 pb-16 md:pt-40 md:pb-20">
+        <div className="container-content">
+          <p className="eyebrow text-[#CC1120] mb-4">Life Together</p>
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-[#FAF9F6] leading-[0.98] max-w-3xl">
+            Find your place<br />in the life of the church.
           </h1>
-          <p className="text-[#8C8B85] text-lg max-w-xl mx-auto font-sans">
-            There&apos;s a place for you to belong, grow, and serve here.
+          <p className="text-white/65 text-base sm:text-lg max-w-xl mt-6 leading-relaxed">
+            Church is more than a Sunday gathering. Discover the ways to connect with the Salvation Church Uganda community.
           </p>
         </div>
-      </div>
+      </section>
 
-      <section className="section-padding bg-[#FAF9F6]" aria-labelledby="ministries-page-heading">
-        <div className="container-content space-y-10">
-          <h2 id="ministries-page-heading" className="sr-only">All Ministries</h2>
-          <p className="text-sm text-[#8C8B85] bg-[#FFF8E7] border border-[#FFD54F] rounded px-4 py-3 max-w-xl">
-            ℹ️ Ministry details are pending confirmation from church leadership.
-            These placeholders will be replaced with real names, descriptions and contacts.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PLACEHOLDER_MINISTRIES.map((m) => (
+      <section className="section-padding bg-[#FAF9F6]" aria-labelledby="ministries-heading">
+        <div className="container-content">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden bg-stone-200">
+              <Image
+                src="/images/child-prayer.jpg"
+                alt="Illustrative photograph for the Sunday School programme"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent" />
+              <p className="absolute bottom-5 left-5 text-xs text-white uppercase tracking-[0.2em]">Children &amp; Families</p>
+            </div>
+            <div className="lg:col-span-5 space-y-5">
+              <p className="eyebrow text-[#CC1120]">For the little ones</p>
+              <h2 id="ministries-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917] leading-[1.05]">
+                Sunday School
+              </h2>
+              <p className="text-stone-600 leading-relaxed">
+                While the main church service is taking place, little children have a separate Sunday School programme.
+              </p>
+              <p className="text-stone-600 leading-relaxed text-sm">
+                If you are planning to visit with children, contact the church team for current programme details and arrangements.
+              </p>
               <Link
-                key={m.id}
-                href={m.href}
-                className="group p-7 bg-[#F2F1EB] hover:bg-white border border-transparent hover:border-[#E8E7E1] hover:shadow-sm rounded-sm transition-all duration-200 space-y-3"
-                aria-label={`${m.name} — learn more`}
+                href="/visit#kids"
+                className="inline-flex items-center gap-2 text-[#CC1120] font-semibold text-sm hover:gap-3 transition-all"
               >
-                <span className="text-4xl" role="img" aria-hidden="true">{m.icon}</span>
-                <h3 className="font-sans font-semibold text-[#1A1917] group-hover:text-[#CC1120] transition-colors">
-                  {m.name}
-                </h3>
-                <p className="text-sm text-[#6B6A65]">{m.desc}</p>
-                <p className="text-xs text-[#CC1120] font-semibold flex items-center gap-1">
-                  Learn more <ArrowRight size={11} aria-hidden="true" />
-                </p>
+                Plan a visit <ArrowUpRight size={16} aria-hidden="true" />
               </Link>
-            ))}
+            </div>
+          </div>
+
+          <div className="border-t border-[#E3E0D8] mt-16 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <p className="font-display text-2xl text-[#1A1917]">More ways to connect</p>
+              <p className="text-sm text-stone-500 mt-1">Details about other ministry groups will be added as they are confirmed by the church.</p>
+            </div>
+            <Link href="/connect" className="inline-flex items-center gap-2 text-sm font-semibold text-[#CC1120]">
+              Contact the church <ArrowUpRight size={15} aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
     </>
   );
 }
-

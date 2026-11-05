@@ -50,10 +50,10 @@ export const metadata: Metadata = {
     description:
       "A community of believers in Namulanda, Entebbe Road, Uganda.",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots:
+    process.env.VERCEL_ENV === "production"
+      ? { index: true, follow: true }
+      : { index: false, follow: false },
 };
 
 export default function RootLayout({

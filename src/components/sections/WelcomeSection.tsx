@@ -2,6 +2,36 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
+const FEATURES = [
+  {
+    number: "01",
+    title: "Worship",
+    description: "Gathering around the presence of God through heartfelt worship.",
+    image: "/images/worship-community.jpg",
+    href: "/watch",
+    link: "Watch a service",
+    imagePosition: "object-center",
+  },
+  {
+    number: "02",
+    title: "Sunday School",
+    description: "A separate programme for little children while the main church service is taking place.",
+    image: "/images/child-prayer.jpg",
+    href: "/visit#kids",
+    link: "For children & families",
+    imagePosition: "object-top",
+  },
+  {
+    number: "03",
+    title: "The Word & Prayer",
+    description: "A community shaped by Scripture, prayer, and the transforming presence of Jesus.",
+    image: "/images/hands-bible-prayer.jpg",
+    href: "/connect#prayer",
+    link: "Connect with us",
+    imagePosition: "object-center",
+  },
+];
+
 export function WelcomeSection() {
   return (
     <section
@@ -9,137 +39,67 @@ export function WelcomeSection() {
       aria-labelledby="house-statement-heading"
     >
       <div className="container-content">
-        
-        {/* Passion City Big Statement Callout Block */}
-        <div className="max-w-4xl mx-auto text-center space-y-6 pb-14 border-b border-[#E8E7E1]">
-          <p className="eyebrow tracking-[0.22em] text-[#CC1120]">Our Heart &amp; House</p>
-          
-          <h2
-            id="house-statement-heading"
-            className="font-display text-3xl sm:text-4xl md:text-5xl text-[#1A1917] font-semibold leading-[1.14] tracking-tight"
-          >
-            &ldquo;We exist to be a community where anyone can experience the grace, truth, and transforming presence of Jesus.&rdquo;
-          </h2>
-
-          <p className="font-sans text-base md:text-lg text-[#6B6A65] max-w-2xl mx-auto leading-relaxed">
-            Led by Pastor Nijel Rawlins, Salvation Church Uganda is built on deep worship, 
-            practical gospel teaching, and a genuine family culture that welcomes you as you are.
-          </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end pb-14 lg:pb-16 border-b border-[#E8E7E1]">
+          <div className="lg:col-span-7">
+            <p className="eyebrow tracking-[0.22em] text-[#CC1120] mb-5">Our Heart &amp; House</p>
+            <h2
+              id="house-statement-heading"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] text-[#1A1917] font-medium leading-[1.02] tracking-tight"
+            >
+              A place to encounter the grace, truth, and transforming presence of Jesus.
+            </h2>
+          </div>
+          <div className="lg:col-span-5 lg:pb-2">
+            <p className="font-sans text-base text-[#6B6A65] leading-relaxed">
+              Salvation Church Uganda is a community rooted in deep worship, practical gospel teaching, and a genuine family culture that welcomes you as you are.
+            </p>
+            <p className="font-sans text-sm text-[#8C8B85] mt-4">
+              Led by Pastor Nijel Rawlins.
+            </p>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-[#1A1917] hover:text-[#CC1120] transition-colors"
+            >
+              Get to know us <ArrowUpRight size={15} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
 
-        {/* Feature Grid with User's Uploaded Authentic Imagery */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
-          
-          {/* Card 1: Authentic Worship */}
-          <div className="rounded-2xl bg-white border border-[#E8E7E1] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:border-[#CC1120]/40 transition-all flex flex-col justify-between group">
-            <div className="relative h-52 w-full bg-[#1A1917] overflow-hidden">
-              <Image
-                src="/images/worship-community.jpg"
-                alt="Authentic Worship"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <span className="absolute bottom-3 left-4 text-xs font-mono font-bold text-white bg-[#CC1120] px-2.5 py-0.5 rounded">
-                01
-              </span>
-            </div>
-            
-            <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
-              <div className="space-y-2">
-                <h3 className="font-display text-2xl font-semibold text-[#1A1917] group-hover:text-[#CC1120] transition-colors">
-                  Authentic Worship
-                </h3>
-                <p className="text-sm text-[#6B6A65] leading-relaxed">
-                  Passionate, contemporary praise and worship centered on God&apos;s character and His promises for our families and nation.
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[#F2F1EB]">
-                <Link
-                  href="/watch"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#CC1120] hover:underline"
-                >
-                  Experience a service <ArrowUpRight size={14} />
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Next Generation & Children (Using user's child prayer image) */}
-          <div className="rounded-2xl bg-white border border-[#E8E7E1] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:border-[#CC1120]/40 transition-all flex flex-col justify-between group">
-            <div className="relative h-52 w-full bg-[#1A1917] overflow-hidden">
-              <Image
-                src="/images/child-prayer.jpg"
-                alt="Children and Next Generation at Salvation Church Uganda"
-                fill
-                className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <span className="absolute bottom-3 left-4 text-xs font-mono font-bold text-white bg-[#CC1120] px-2.5 py-0.5 rounded">
-                02
-              </span>
-            </div>
-            
-            <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
-              <div className="space-y-2">
-                <h3 className="font-display text-2xl font-semibold text-[#1A1917] group-hover:text-[#CC1120] transition-colors">
-                  Next Generation &amp; Families
-                </h3>
-                <p className="text-sm text-[#6B6A65] leading-relaxed">
-                  Nurturing young hearts in faith, biblical wisdom, and a safe environment where children discover their identity in Christ.
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[#F2F1EB]">
-                <Link
-                  href="/visit#kids"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#CC1120] hover:underline"
-                >
-                  For Children &amp; Families <ArrowUpRight size={14} />
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 3: Deep Word & Prayer (Using user's hands-bible-prayer image) */}
-          <div className="rounded-2xl bg-white border border-[#E8E7E1] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:border-[#CC1120]/40 transition-all flex flex-col justify-between group">
-            <div className="relative h-52 w-full bg-[#1A1917] overflow-hidden">
-              <Image
-                src="/images/hands-bible-prayer.jpg"
-                alt="Prayer and Word of God"
-                fill
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <span className="absolute bottom-3 left-4 text-xs font-mono font-bold text-white bg-[#CC1120] px-2.5 py-0.5 rounded">
-                03
-              </span>
-            </div>
-            
-            <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
-              <div className="space-y-2">
-                <h3 className="font-display text-2xl font-semibold text-[#1A1917] group-hover:text-[#CC1120] transition-colors">
-                  The Word &amp; Prayer
-                </h3>
-                <p className="text-sm text-[#6B6A65] leading-relaxed">
-                  Grounded in Scripture and fervent prayer. We believe God speaks, transforms lives, and answers prayers today.
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[#F2F1EB]">
-                <Link
-                  href="/connect#prayer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#CC1120] hover:underline"
-                >
-                  Submit Prayer Request <ArrowUpRight size={14} />
-                </Link>
-              </div>
-            </div>
-          </div>
-
+        <div className="pt-12 grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-8">
+          {FEATURES.map((feature) => (
+            <article key={feature.number} className="group">
+              <Link href={feature.href} className="block">
+                <div className="relative aspect-[5/4] overflow-hidden bg-[#E8E7E1]">
+                  <Image
+                    src={feature.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className={`object-cover transition-transform duration-700 group-hover:scale-[1.035] ${feature.imagePosition}`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-[0.18em] text-white border border-white/50 px-3 py-1.5">
+                    {feature.number}
+                  </span>
+                </div>
+                <div className="pt-5 flex items-start justify-between gap-4 border-b border-[#E8E7E1] pb-5">
+                  <div>
+                    <h3 className="font-display text-2xl sm:text-3xl text-[#1A1917] font-medium group-hover:text-[#CC1120] transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-[#6B6A65] leading-relaxed mt-2 max-w-sm">
+                      {feature.description}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#CC1120] mt-4">
+                      {feature.link} <ArrowUpRight size={13} aria-hidden="true" />
+                    </span>
+                  </div>
+                  <span className="text-xs text-[#B0AFA9] font-medium">{feature.number}</span>
+                </div>
+              </Link>
+            </article>
+          ))}
         </div>
-
       </div>
     </section>
   );

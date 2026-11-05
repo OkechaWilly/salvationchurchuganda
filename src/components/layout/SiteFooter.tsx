@@ -36,7 +36,6 @@ const FOOTER_SECTIONS = [
       { label: "Watch Sermons", href: "/watch" },
       { label: "Prayer Requests", href: "/connect#prayer" },
       { label: "Contact Us", href: "/connect" },
-      { label: "Give", href: "/give" },
     ],
   },
 ];
@@ -81,6 +80,14 @@ export function SiteFooter() {
               >
                 <Phone size={14} aria-hidden="true" className="text-[#CC1120] flex-shrink-0" />
                 {CHURCH_CONTACT.phone}
+              </a>
+              <a
+                href={`tel:${CHURCH_CONTACT.alternatePhoneTel}`}
+                className="flex items-center gap-2.5 text-sm text-[#B0AFA9] hover:text-white transition-colors"
+                aria-label={`Phone: ${CHURCH_CONTACT.alternatePhone}`}
+              >
+                <Phone size={14} aria-hidden="true" className="text-[#CC1120] flex-shrink-0" />
+                {CHURCH_CONTACT.alternatePhone}
               </a>
               <span className="flex items-start gap-2.5 text-sm text-[#B0AFA9]">
                 <MapPin size={14} aria-hidden="true" className="text-[#CC1120] flex-shrink-0 mt-0.5" />

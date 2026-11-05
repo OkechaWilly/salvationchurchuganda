@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Phone } from "lucide-react";
@@ -10,6 +10,9 @@ import { cn } from "@/lib/utils";
 export function SiteNav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 30);
@@ -21,6 +24,44 @@ export function SiteNav() {
     document.body.style.overflow = isMobileOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
+    };
+  }, [isMobileOpen]);
+
+
+  useEffect(() => {
+    if (!isMobileOpen) return;
+
+    const previousFocus = document.activeElement as HTMLElement | null;
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsMobileOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !drawerRef.current) return;
+      const focusable = drawerRef.current.querySelectorAll<HTMLElement>(
+        `a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])`
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      if (previousFocus?.isConnected) previousFocus.focus();
+      else menuToggleRef.current?.focus();
     };
   }, [isMobileOpen]);
 
@@ -131,6 +172,7 @@ export function SiteNav() {
 
             {/* Mobile toggle */}
             <button
+              ref={menuToggleRef}
               type="button"
               className={cn(
                 "lg:hidden p-2 rounded-lg transition-colors",
@@ -154,6 +196,7 @@ export function SiteNav() {
       {/* ── Mobile drawer ── */}
       <div
         id="mobile-drawer"
+        ref={drawerRef}
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
@@ -190,6 +233,7 @@ export function SiteNav() {
               className="h-8 w-auto"
             />
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={closeMobile}
               className="p-2 rounded-lg text-stone-600 hover:text-black hover:bg-stone-100 transition-colors"

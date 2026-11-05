@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { NucleusSermonsReference } from "@/components/sections/NucleusSermonsReference";
+import { WatchSermonLibrary } from "@/components/sections/WatchSermonLibrary";
 
 export const metadata: Metadata = {
-  title: "Watch & Listen | Sermon Hub",
-  description:
-    "Explore Sunday sermons, message series, scripture notes and video archives from Salvation Church Uganda in our modern sermon hub.",
+  title: "Watch & Listen",
+  description: "Watch recent messages and sermons from Salvation Church Uganda, directly on our website.",
 };
 
 export default function WatchPage() {
-  return <NucleusSermonsReference />;
+  return <WatchSermonLibrary />;
 }

@@ -1,127 +1,91 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, MapPin, Clock, Phone } from "lucide-react";
 import { CHURCH_LOCATION, CHURCH_CONTACT } from "@/lib/constants";
 
 export function VisitCtaSection() {
   return (
     <section
-      className="section-padding bg-[#F4F3F0] text-[#1A1917] border-b border-stone-200"
+      className="section-padding bg-[#F2F1EB] text-[#1A1917] border-b border-[#E8E7E1]"
       aria-labelledby="gather-heading"
     >
       <div className="container-content">
-        
-        {/* Elevation Clean White Card Container */}
-        <div className="rounded-3xl bg-white border border-stone-200 p-8 sm:p-12 lg:p-16 shadow-xs">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6">
-              <span className="inline-block px-3.5 py-1 rounded-full bg-[#F5E5E7] text-[#CC1120] text-[11px] font-sans font-bold uppercase tracking-widest">
-                Gatherings in Namulanda
-              </span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 bg-white">
+          <div className="lg:col-span-7 p-7 sm:p-10 lg:p-14 flex flex-col justify-center">
+            <p className="eyebrow text-[#CC1120] mb-5">Come as you are</p>
+            <h2
+              id="gather-heading"
+              className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#1A1917] font-medium leading-[1.02] tracking-tight"
+            >
+              There&apos;s a seat for you.
+            </h2>
+            <p className="text-base text-[#6B6A65] leading-relaxed max-w-xl mt-6">
+              Whether you are exploring faith or looking for a church community along Entebbe Road, you are welcome to join a Sunday gathering at Salvation Church Uganda.
+            </p>
 
-              <h2
-                id="gather-heading"
-                className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#1A1917] font-semibold leading-[1.08] tracking-tight"
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 mt-8 pt-7 border-t border-[#E8E7E1]">
+              <div className="flex items-start gap-3">
+                <MapPin size={17} className="text-[#CC1120] mt-1 shrink-0" aria-hidden="true" />
+                <div>
+                  <p className="text-sm font-semibold text-[#1A1917]">Namulanda Assembly</p>
+                  <p className="text-xs text-[#8C8B85] mt-1">{CHURCH_LOCATION.address}, {CHURCH_LOCATION.city}</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Clock size={17} className="text-[#CC1120] mt-1 shrink-0" aria-hidden="true" />
+                <div>
+                  <p className="text-sm font-semibold text-[#1A1917]">Sunday gatherings</p>
+                  <p className="text-xs text-[#8C8B85] mt-1">10:00 AM – 1:00 PM</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 sm:col-span-2">
+                <Phone size={17} className="text-[#CC1120] mt-1 shrink-0" aria-hidden="true" />
+                <div>
+                  <p className="text-sm font-semibold text-[#1A1917]">Questions before you visit?</p>
+                  <a href={`tel:${CHURCH_CONTACT.phoneTel}`} className="text-xs text-[#CC1120] mt-1 inline-block hover:underline">
+                    {CHURCH_CONTACT.phone}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-5 mt-8">
+              <Link
+                href="/visit"
+                className="group inline-flex items-center gap-3 bg-[#1A1917] text-white hover:bg-[#CC1120] font-semibold px-6 py-4 text-sm transition-colors"
               >
-                Join Us in Person{" "}
-                <span className="italic font-light text-stone-500 block sm:inline">
-                  This Sunday.
-                </span>
-              </h2>
-
-              <p className="text-base sm:text-lg text-stone-600 leading-relaxed max-w-xl font-normal">
-                Whether you are exploring faith or looking for a home church along Entebbe Road, 
-                our hospitality team will be ready to welcome you, your friends, and your family.
-              </p>
-
-              {/* What to Expect checklist */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-stone-700 font-medium">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#CC1120]" />
-                  <span>Warm, relaxed atmosphere</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#CC1120]" />
-                  <span>Safe, vibrant kids environment</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#CC1120]" />
-                  <span>Inspiring live worship</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#CC1120]" />
-                  <span>Practical, biblical teaching</span>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-4">
-                <Link
-                  href="/visit"
-                  className="group inline-flex items-center gap-2 bg-[#1A1917] text-white hover:bg-[#CC1120] font-sans font-semibold px-7 py-3.5 rounded-full text-sm transition-all shadow-xs"
-                >
-                  <span>Plan Your Visit</span>
-                  <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </Link>
-
-                <a
-                  href={`tel:${CHURCH_CONTACT.phoneTel}`}
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-stone-300 text-stone-800 text-sm font-semibold hover:bg-stone-50 transition-colors"
-                >
-                  <span>Call {CHURCH_CONTACT.phone}</span>
-                </a>
-              </div>
+                Plan your visit
+                <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+              <Link href="/visit#kids" className="text-sm font-semibold text-[#1A1917] hover:text-[#CC1120] transition-colors">
+                Visiting with children?
+              </Link>
             </div>
+          </div>
 
-            {/* Right Card / Location Highlight Card */}
-            <div className="lg:col-span-5 bg-[#FAF9F6] border border-stone-200 rounded-2xl p-6 sm:p-8 space-y-6">
-              
-              <div className="border-b border-stone-200 pb-4 space-y-1">
-                <p className="text-[11px] font-sans font-bold uppercase tracking-widest text-[#CC1120]">
-                  Physical Campus
-                </p>
-                <h3 className="font-display text-2xl text-stone-900 font-semibold">
-                  Namulanda Assembly
-                </h3>
-              </div>
-
-              <div className="space-y-4 text-sm text-stone-600">
-                <div className="flex items-start gap-3">
-                  <MapPin size={16} className="text-[#CC1120] mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="text-stone-900 font-medium">{CHURCH_LOCATION.address}</p>
-                    <p className="text-xs text-stone-500">{CHURCH_LOCATION.city}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Clock size={16} className="text-[#CC1120] mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="text-stone-900 font-medium">Sunday Physical Gatherings</p>
-                    <p className="text-xs text-stone-500">Morning &amp; Midday services (call for current schedules)</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <a
-                  href={CHURCH_LOCATION.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white hover:bg-stone-100 text-xs font-semibold text-stone-900 border border-stone-200 transition-colors shadow-xs"
-                >
-                  <MapPin size={14} className="text-[#CC1120]" />
-                  Open in Google Maps
-                </a>
-              </div>
-
+          <div className="lg:col-span-5 relative min-h-[300px] sm:min-h-[420px] bg-[#1A1917]">
+            <Image
+              src="/images/worship-community.jpg"
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/10" />
+            <div className="absolute bottom-7 left-7 right-7 text-white">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/75 mb-2">Salvation Church Uganda</p>
+              <p className="font-display text-3xl sm:text-4xl leading-tight">Namulanda, Entebbe Road</p>
+              <a
+                href={CHURCH_LOCATION.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.13em] mt-5 border-b border-white/50 pb-2 hover:border-white transition-colors"
+              >
+                Open in Google Maps <ArrowUpRight size={13} />
+              </a>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );
