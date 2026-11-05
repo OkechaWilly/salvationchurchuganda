@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Play, Search, X } from "lucide-react";
 
 type Sermon = {
@@ -29,14 +29,46 @@ export function WatchSermonLibrary() {
   const [sortNewest, setSortNewest] = useState(true);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closePreviewRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!previewVideo) return;
+
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closePreviewRef.current?.focus();
+
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setPreviewVideo(null);
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setPreviewVideo(null);
+        return;
+      }
+
+      if (event.key !== "Tab" || !modalRef.current) return;
+      const focusable = modalRef.current.querySelectorAll<HTMLElement>(
+        "button:not([disabled]), iframe, a[href], [tabindex]:not([tabindex='-1'])"
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      if (previousFocus?.isConnected) previousFocus.focus();
+    };
   }, [previewVideo]);
 
   useEffect(() => {
@@ -222,6 +254,7 @@ export function WatchSermonLibrary() {
 
       {previewVideo && (
         <div
+          ref={modalRef}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 px-3 py-6 sm:px-6"
           role="dialog"
           aria-modal="true"
@@ -234,7 +267,7 @@ export function WatchSermonLibrary() {
                 <p className="text-[10px] uppercase tracking-[0.18em] text-white/55">Now watching</p>
                 <h2 className="truncate text-base sm:text-lg font-semibold">{previewVideo.title}</h2>
               </div>
-              <button type="button" onClick={() => setPreviewVideo(null)} aria-label="Close video preview" className="shrink-0 rounded-full border border-white/25 p-2.5 text-white transition hover:bg-white hover:text-black">
+              <button ref={closePreviewRef} type="button" onClick={() => setPreviewVideo(null)} aria-label="Close video preview" className="shrink-0 rounded-full border border-white/25 p-2.5 text-white transition hover:bg-white hover:text-black">
                 <X size={20} />
               </button>
             </div>
