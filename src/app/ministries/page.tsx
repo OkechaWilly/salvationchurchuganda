@@ -12,15 +12,22 @@ export const metadata: Metadata = {
 export default function MinistriesPage() {
   return (
     <>
-      <section className="bg-[#1A1917] pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="container-content">
-          <p className="eyebrow text-[#CC1120] mb-4">Life Together</p>
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-[#FAF9F6] leading-[0.98] max-w-3xl">
-            Find your place<br />in the life of the church.
-          </h1>
-          <p className="text-white/65 text-base sm:text-lg max-w-xl mt-6 leading-relaxed">
-            Church is more than a Sunday gathering. Discover the ways to connect with the Salvation Church Uganda community.
-          </p>
+      <section className="relative isolate min-h-[48svh] md:min-h-[54svh] flex items-end overflow-hidden bg-[#1A1917] text-white">
+        <div className="absolute inset-0 -z-20">
+          <Image src="/images/church/Sundayschool%20banner%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center brightness-[1.1]" />
+        </div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/90 via-[#1A1917]/65 to-[#1A1917]/25" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#1A1917]/40 via-transparent to-transparent" />
+        <div className="container-content w-full py-24 md:py-32">
+          <div className="max-w-3xl">
+            <p className="eyebrow text-[#F08088] mb-5">Life Together</p>
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-[#FAF9F6] leading-[0.96] max-w-3xl">
+              Find your place<br />in the life of the church.
+            </h1>
+            <p className="text-white/80 text-base sm:text-lg max-w-xl mt-6 leading-relaxed">
+              Church is more than a Sunday gathering. Discover the ways to connect with the Salvation Church Uganda community.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -29,10 +36,10 @@ export default function MinistriesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden bg-stone-200">
               <Image
-                src="/images/child-prayer.jpg"
-                alt="Illustrative photograph for the Sunday School programme"
+                src="/images/church/Sunday%20sch6%20-.jpeg"
+                alt="Children taking part in the Sunday School programme"
                 fill
-                className="object-cover"
+                className="object-cover brightness-[1.05]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent" />
               <p className="absolute bottom-5 left-5 text-xs text-white uppercase tracking-[0.2em]">Children &amp; Families</p>
