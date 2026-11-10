@@ -56,6 +56,57 @@ export const metadata: Metadata = {
       : { index: false, follow: false },
 };
 
+const churchJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Church",
+  name: "Salvation Church Uganda",
+  description:
+    "A community of believers in Namulanda, Entebbe Road, Uganda. Sunday services from 10:00 AM to 1:00 PM with children Sunday School.",
+  url: "https://salvationchurchuganda.vercel.app",
+  telephone: "+256 774 707220",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Namulanda, near Kajjansi / Entebbe Road",
+    addressLocality: "Wakiso District",
+    addressCountry: "UG",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 0.1983,
+    longitude: 32.5375,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Sunday",
+      opens: "10:00",
+      closes: "13:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Wednesday",
+      opens: "18:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Thursday",
+      opens: "18:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Friday",
+      opens: "18:00",
+      closes: "19:00",
+    },
+  ],
+  founder: {
+    "@type": "Person",
+    name: "Pastor Nijel Rawlins",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -63,6 +114,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(churchJsonLd) }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col bg-[#FAF9F6]">
         <SiteNav />
         <main id="main-content" className="flex-1">
