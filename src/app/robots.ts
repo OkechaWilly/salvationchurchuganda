@@ -14,3 +14,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: "https://salvationchurchuganda.vercel.app/sitemap.xml",
   };
 }
+
