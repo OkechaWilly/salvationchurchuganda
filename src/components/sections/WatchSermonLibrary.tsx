@@ -115,9 +115,9 @@ export function WatchSermonLibrary() {
     <div className="min-h-screen bg-[#FAF9F6] text-[#1A1917] font-sans antialiased">
       <section className="relative isolate overflow-hidden bg-[#1A1917] text-white px-4 sm:px-8 pt-36 pb-16 sm:pt-40 sm:pb-20">
         <div className="absolute inset-0 -z-10">
-          <Image src="/images/church/Worship2%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center opacity-35" />
+          <Image src="/images/church/Worship2%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center brightness-[1.12] opacity-45" />
         </div>
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/95 via-[#1A1917]/80 to-[#1A1917]/55" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/85 via-[#1A1917]/70 to-[#1A1917]/40" />
         <div className="max-w-6xl mx-auto">
         <div className="mb-7">
           <p className="text-[10px] font-bold tracking-[0.2em] text-[#E05A64] uppercase mb-3">
