@@ -14,8 +14,8 @@ export default function EventsPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden bg-[#1A1917] pt-36 pb-20 md:pt-44 md:pb-28">
-        <div className="absolute inset-0 -z-10"><Image src="/images/church/Worship2%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center opacity-40" /></div>
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/95 via-[#1A1917]/80 to-[#1A1917]/40" />
+        <div className="absolute inset-0 -z-10"><Image src="/images/church/Worship2%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center brightness-[1.12] opacity-45" /></div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/85 via-[#1A1917]/70 to-[#1A1917]/30" />
         <div className="container-content">
           <p className="eyebrow text-[#E05A64] mb-5">Life Together</p>
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-[#FAF9F6] leading-[0.96] max-w-3xl">
