@@ -12,7 +12,7 @@ export function MinistriesPreviewSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden bg-[#E8E7E1]">
             <Image
-              src="/images/child-prayer.jpg"
+              src="/images/church/Sunday%20school%20kids%2002%20-.jpeg"
               alt=""
               fill
               sizes="(max-width: 1024px) 100vw, 58vw"
