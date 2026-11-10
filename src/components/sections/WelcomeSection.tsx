@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const FEATURES = [
   {
     number: "01",
     title: "Worship",
-    description: "Gathering around the presence of God through heartfelt worship.",
+    description: "Gathering around the presence of God through heartfelt worship and praise.",
     image: "/images/church/Choir%20on%20stage1%20-.jpeg",
     href: "/watch",
     link: "Watch a service",
@@ -15,7 +16,7 @@ const FEATURES = [
   {
     number: "02",
     title: "Sunday School",
-    description: "A separate programme for little children while the main church service is taking place.",
+    description: "A joyful separate programme for little children while the main church service is taking place.",
     image: "/images/church/Sunday%20school%20kids%20-.jpeg",
     href: "/visit#kids",
     link: "For children & families",
@@ -24,8 +25,8 @@ const FEATURES = [
   {
     number: "03",
     title: "The Word & Prayer",
-    description: "A community shaped by Scripture, prayer, and the transforming presence of Jesus.",
-    image: "/images/church/lady%20praying%20for%20a%20kid%20-.jpeg",
+    description: "A community shaped by Scripture, personal prayer, and the transforming presence of Jesus.",
+    image: "/images/church/Pastor%20praying%20for%20people%20-.jpeg",
     href: "/connect#prayer",
     link: "Connect with us",
     imagePosition: "object-center",
@@ -39,65 +40,84 @@ export function WelcomeSection() {
       aria-labelledby="house-statement-heading"
     >
       <div className="container-content">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end pb-14 lg:pb-16 border-b border-[#E8E7E1]">
-          <div className="lg:col-span-7">
-            <p className="eyebrow tracking-[0.22em] text-[#CC1120] mb-5">Our Heart &amp; House</p>
-            <h2
-              id="house-statement-heading"
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] text-[#1A1917] font-medium leading-[1.02] tracking-tight"
-            >
-              A place to encounter the grace, truth, and transforming presence of Jesus.
-            </h2>
+        <ScrollReveal>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end pb-14 lg:pb-16 border-b border-[#E8E7E1]">
+            <div className="lg:col-span-7">
+              <p className="eyebrow tracking-[0.22em] text-[#CC1120] mb-5">Our Heart &amp; House</p>
+              <h2
+                id="house-statement-heading"
+                className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] text-[#1A1917] font-medium leading-[1.02] tracking-tight"
+              >
+                A place to encounter the grace, truth, and transforming presence of Jesus.
+              </h2>
+            </div>
+            <div className="lg:col-span-5 lg:pb-2">
+              <p className="font-sans text-base text-[#6B6A65] leading-relaxed">
+                Salvation Church Uganda is a community rooted in deep worship, practical gospel teaching, and a genuine family culture that welcomes you as you are.
+              </p>
+
+              <div className="flex items-center gap-3.5 mt-6 pt-5 border-t border-[#E8E7E1]">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-stone-200 shrink-0 border border-stone-300">
+                  <Image
+                    src="/images/church/Pr%20Nijel%2001%20-.jpeg"
+                    alt="Pastor Nijel Rawlins"
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#1A1917]">
+                    Pastor Nijel Rawlins
+                  </p>
+                  <p className="text-xs text-[#8C8B85]">Lead Pastor, Salvation Church Uganda</p>
+                </div>
+              </div>
+
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-[#1A1917] hover:text-[#CC1120] transition-colors"
+              >
+                Get to know our story <ArrowUpRight size={15} aria-hidden="true" />
+              </Link>
+            </div>
           </div>
-          <div className="lg:col-span-5 lg:pb-2">
-            <p className="font-sans text-base text-[#6B6A65] leading-relaxed">
-              Salvation Church Uganda is a community rooted in deep worship, practical gospel teaching, and a genuine family culture that welcomes you as you are.
-            </p>
-            <p className="font-sans text-sm text-[#8C8B85] mt-4">
-              Led by Pastor Nijel Rawlins.
-            </p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-[#1A1917] hover:text-[#CC1120] transition-colors"
-            >
-              Get to know us <ArrowUpRight size={15} aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
+        </ScrollReveal>
 
         <div className="pt-12 grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-8">
-          {FEATURES.map((feature) => (
-            <article key={feature.number} className="group">
-              <Link href={feature.href} className="block">
-                <div className="relative aspect-[5/4] overflow-hidden bg-[#E8E7E1]">
-                  <Image
-                    src={feature.image}
-                    alt=""
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className={`object-cover transition-transform duration-700 group-hover:scale-[1.035] ${feature.imagePosition}`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                  <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-[0.18em] text-white border border-white/50 px-3 py-1.5">
-                    {feature.number}
-                  </span>
-                </div>
-                <div className="pt-5 flex items-start justify-between gap-4 border-b border-[#E8E7E1] pb-5">
-                  <div>
-                    <h3 className="font-display text-2xl sm:text-3xl text-[#1A1917] font-medium group-hover:text-[#CC1120] transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-[#6B6A65] leading-relaxed mt-2 max-w-sm">
-                      {feature.description}
-                    </p>
-                    <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#CC1120] mt-4">
-                      {feature.link} <ArrowUpRight size={13} aria-hidden="true" />
+          {FEATURES.map((feature, idx) => (
+            <ScrollReveal key={feature.number} delay={idx * 120}>
+              <article className="group h-full">
+                <Link href={feature.href} className="block h-full">
+                  <div className="relative aspect-[5/4] overflow-hidden bg-[#E8E7E1] border border-[#E8E7E1]">
+                    <Image
+                      src={feature.image}
+                      alt=""
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className={`object-cover transition-transform duration-700 group-hover:scale-[1.035] ${feature.imagePosition}`}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-[0.18em] text-white bg-black/40 backdrop-blur-xs border border-white/40 px-3 py-1.5">
+                      {feature.number}
                     </span>
                   </div>
-                  <span className="text-xs text-[#B0AFA9] font-medium">{feature.number}</span>
-                </div>
-              </Link>
-            </article>
+                  <div className="pt-5 flex items-start justify-between gap-4 border-b border-[#E8E7E1] pb-5">
+                    <div>
+                      <h3 className="font-display text-2xl sm:text-3xl text-[#1A1917] font-medium group-hover:text-[#CC1120] transition-colors">
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm text-[#6B6A65] leading-relaxed mt-2 max-w-sm font-sans">
+                        {feature.description}
+                      </p>
+                      <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#CC1120] mt-4 font-sans">
+                        {feature.link} <ArrowUpRight size={13} aria-hidden="true" />
+                      </span>
+                    </div>
+                    <span className="text-xs text-[#B0AFA9] font-medium font-sans">{feature.number}</span>
+                  </div>
+                </Link>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>
