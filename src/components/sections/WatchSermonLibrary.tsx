@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import { ChevronDown, Play, Search, X } from "lucide-react";
 
 type Sermon = {
@@ -111,20 +112,25 @@ export function WatchSermonLibrary() {
   }, [videos, query, sortNewest]);
 
   return (
-    <div className="min-h-screen bg-[#F3F4F6] text-[#111827] font-sans antialiased">
-      <section className="px-4 sm:px-8 py-8 sm:py-12 max-w-6xl mx-auto">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#1A1917] font-sans antialiased">
+      <section className="relative isolate overflow-hidden bg-[#1A1917] text-white px-4 sm:px-8 pt-36 pb-16 sm:pt-40 sm:pb-20">
+        <div className="absolute inset-0 -z-10">
+          <Image src="/images/church/Worship2%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center opacity-35" />
+        </div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/95 via-[#1A1917]/80 to-[#1A1917]/55" />
+        <div className="max-w-6xl mx-auto">
         <div className="mb-7">
-          <p className="text-[10px] font-bold tracking-[0.2em] text-[#CC1120] uppercase mb-3">
+          <p className="text-[10px] font-bold tracking-[0.2em] text-[#E05A64] uppercase mb-3">
             Salvation Church Uganda
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-black">
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-normal tracking-tight leading-[0.94] text-[#FAF9F6]">
             Watch &amp; Listen
           </h1>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-7">
-            <div className="relative aspect-video w-full bg-black rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.18)]">
+            <div className="relative aspect-video w-full bg-black overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.24)] ring-1 ring-white/15">
               {activeVideo && !previewVideo ? (
                 <iframe
                   key={activeVideo.id}
@@ -144,50 +150,51 @@ export function WatchSermonLibrary() {
           </div>
 
           <div className="lg:col-span-5 space-y-4">
-            <p className="text-[11px] font-bold tracking-[0.2em] text-gray-400 uppercase">
+            <p className="text-[11px] font-bold tracking-[0.2em] text-[#E05A64] uppercase">
               {activeVideo ? "Latest message" : "Featured"}
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-semibold tracking-tight text-black leading-[1.1]">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.9rem] font-normal tracking-tight text-[#FAF9F6] leading-[1.08]">
               {activeVideo?.title ?? "Messages to strengthen your faith."}
             </h2>
-            <p className="text-sm text-gray-600 leading-relaxed max-w-md">
+            <p className="text-sm text-white/70 leading-relaxed max-w-md">
               {activeVideo
                 ? `${activeVideo.channelTitle} · ${formatDate(activeVideo.publishedAt)}`
                 : "Watch messages from Salvation Church Uganda. The latest videos will appear here as soon as the channel feed is connected."}
             </p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-white/55">
               Select any message below to play it in this featured player.
             </p>
           </div>
         </div>
+        </div>
       </section>
 
-      <main className="bg-white border-t border-gray-100 min-h-[600px] pt-8 pb-24 px-4 sm:px-8">
+      <main className="bg-[#FAF9F6] border-t border-[#E8E7E1] min-h-[600px] pt-12 sm:pt-16 pb-24 px-4 sm:px-8">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#CC1120] mb-2">
                 Salvation Church Uganda
               </p>
-              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-black">
+              <h2 className="font-display text-3xl sm:text-4xl font-normal tracking-tight text-[#1A1917]">
                 Recent messages
               </h2>
             </div>
             <div className="flex items-center gap-3">
-              <label className="flex items-center gap-2 bg-[#F3F4F6] px-3.5 py-2.5 rounded-xl text-xs text-gray-700">
+              <label className="flex items-center gap-2 bg-white border border-[#E8E7E1] px-3.5 py-2.5 text-xs text-[#6B6A65]">
                 <span>Sort:</span>
-                <button type="button" onClick={() => setSortNewest((value) => !value)} className="font-semibold text-black flex items-center gap-1">
+                <button type="button" onClick={() => setSortNewest((value) => !value)} className="font-semibold text-[#1A1917] flex items-center gap-1">
                   {sortNewest ? "Newest first" : "Oldest first"} <ChevronDown size={12} />
                 </button>
               </label>
-              <label className="flex items-center gap-2 bg-[#F3F4F6] px-3.5 py-2.5 rounded-xl text-xs text-gray-700">
+              <label className="flex items-center gap-2 bg-white border border-[#E8E7E1] px-3.5 py-2.5 text-xs text-[#6B6A65]">
                 <Search size={13} />
                 <input
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Search sermons"
                   aria-label="Search sermons"
-                  className="w-28 sm:w-36 bg-transparent outline-none placeholder:text-gray-400"
+                  className="w-28 sm:w-36 bg-transparent outline-none text-[#1A1917] placeholder:text-[#A5A39C]"
                 />
               </label>
             </div>
@@ -215,10 +222,10 @@ export function WatchSermonLibrary() {
                 key={video.id}
                 type="button"
                 onClick={() => setPreviewVideo(video)}
-                className="text-left group flex flex-col space-y-2.5"
+                className="text-left group flex flex-col space-y-3"
                 aria-label={`Play ${video.title}`}
               >
-                <div className="relative aspect-video w-full bg-black rounded-xl overflow-hidden shadow-sm">
+                <div className="relative aspect-video w-full bg-black overflow-hidden">
                   {/* YouTube supplies the real thumbnail URL for each video. */}
                   <img
                     src={video.thumbnail}
@@ -234,14 +241,14 @@ export function WatchSermonLibrary() {
                 </div>
                 <div className="flex items-start justify-between gap-3 pt-1">
                   <div>
-                    <h3 className="font-semibold text-sm text-black group-hover:text-[#CC1120] transition-colors leading-snug">
+                    <h3 className="font-semibold text-sm text-[#1A1917] group-hover:text-[#CC1120] transition-colors leading-snug">
                       {video.title}
                     </h3>
-                    <p className="text-[11px] text-gray-500 mt-1.5">
+                    <p className="text-[11px] text-[#8C8B85] mt-1.5">
                       {formatDate(video.publishedAt)}
                     </p>
                   </div>
-                  <span className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 group-hover:bg-black group-hover:text-white transition-colors shrink-0">
+                  <span className="w-6 h-6 border border-[#D8D5CC] flex items-center justify-center text-[#8C8B85] group-hover:bg-[#1A1917] group-hover:text-white group-hover:border-[#1A1917] transition-colors shrink-0">
                     <Play size={10} fill="currentColor" />
                   </span>
                 </div>

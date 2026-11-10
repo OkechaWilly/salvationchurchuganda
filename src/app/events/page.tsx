@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, CalendarDays, Clock } from "lucide-react";
 import { WEEKLY_GATHERINGS, MONTHLY_GATHERINGS } from "@/lib/constants";
 
@@ -12,7 +13,9 @@ export const metadata: Metadata = {
 export default function EventsPage() {
   return (
     <>
-      <section className="bg-[#1A1917] pt-36 pb-20 md:pt-44 md:pb-28">
+      <section className="relative isolate overflow-hidden bg-[#1A1917] pt-36 pb-20 md:pt-44 md:pb-28">
+        <div className="absolute inset-0 -z-10"><Image src="/images/church/Worship2%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center opacity-40" /></div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/95 via-[#1A1917]/80 to-[#1A1917]/40" />
         <div className="container-content">
           <p className="eyebrow text-[#E05A64] mb-5">Life Together</p>
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-[#FAF9F6] leading-[0.96] max-w-3xl">
@@ -26,6 +29,10 @@ export default function EventsPage() {
 
       <section className="section-padding bg-[#FAF9F6]">
         <div className="container-content space-y-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="relative aspect-[16/9] overflow-hidden bg-[#E8E7E1]"><Image src="/images/church/Choir%20on%20stage2%20-.jpeg" alt="The church choir leading worship" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" /></div>
+            <div className="relative aspect-[16/9] overflow-hidden bg-[#E8E7E1]"><Image src="/images/church/Baptism%20certification%20day4%20-.jpeg" alt="A baptism gathering at Salvation Church Uganda" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" /></div>
+          </div>
           <div>
             <div className="flex items-center gap-3 mb-6"><Clock size={18} className="text-[#CC1120]" aria-hidden="true" /><p className="eyebrow">Every week</p></div>
             <h2 className="font-display text-3xl sm:text-4xl text-[#1A1917] mb-8">Regular gatherings</h2>

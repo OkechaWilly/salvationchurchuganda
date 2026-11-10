@@ -5,9 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 const HERO_IMAGES = [
-  { src: "/images/worship-community.jpg", alt: "Worship at Salvation Church Uganda" },
-  { src: "/images/hands-bible-prayer.jpg", alt: "A moment of prayer and reflection" },
-  { src: "/images/child-prayer.jpg", alt: "Children and families in the life of the church" },
+  { src: "/images/church/Worship1%20-.jpeg", alt: "Worship at Salvation Church Uganda" },
+  { src: "/images/church/COngregation_1%20-.jpeg", alt: "A moment of prayer and reflection" },
+  { src: "/images/church/Main%20church%20interior%20with%20congretation3%20-.jpeg", alt: "Children and families in the life of the church" },
 ];
 
 export function HeroSection() {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -11,7 +12,9 @@ export const metadata: Metadata = {
 export default function LeadershipPage() {
   return (
     <>
-      <section className="bg-[#1A1917] text-white pt-36 pb-20 md:pt-44 md:pb-28">
+      <section className="relative isolate overflow-hidden bg-[#1A1917] text-white pt-36 pb-20 md:pt-44 md:pb-28">
+        <div className="absolute inset-0 -z-10"><Image src="/images/church/COngregation_8%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center opacity-35" /></div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/95 via-[#1A1917]/80 to-[#1A1917]/45" />
         <div className="container-content">
           <p className="eyebrow text-[#E05A64] mb-5">Salvation Church Uganda</p>
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-[#FAF9F6] leading-[0.98] tracking-tight max-w-4xl">
@@ -25,7 +28,11 @@ export default function LeadershipPage() {
 
       <section className="section-padding bg-[#FAF9F6]" aria-labelledby="pastor-heading">
         <div className="container-content">
-          <div className="max-w-3xl border-t border-[#D8D5CC] pt-7">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-9 md:gap-14 items-center border-t border-[#D8D5CC] pt-7">
+            <div className="md:col-span-5 relative aspect-[4/5] max-h-[560px] overflow-hidden bg-[#E8E7E1]">
+              <Image src="/images/church/Pr%20Nijel%2002%20-.JPG" alt="Pastor Nijel Rawlins" fill sizes="(max-width: 768px) 100vw, 42vw" className="object-cover object-center" />
+            </div>
+            <div className="md:col-span-7">
             <p className="eyebrow text-[#CC1120] mb-4">Church leadership</p>
             <h2 id="pastor-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917]">
               Pastor Nijel Rawlins
@@ -36,6 +43,7 @@ export default function LeadershipPage() {
             <Link href="/connect" className="inline-flex items-center gap-2 text-sm font-semibold text-[#CC1120] mt-7">
               Contact the church <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
+            </div>
           </div>
         </div>
       </section>
