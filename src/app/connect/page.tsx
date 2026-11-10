@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Phone, MapPin, Mail, ShieldCheck } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import { CHURCH_CONTACT, CHURCH_LOCATION, CHURCH_SOCIAL } from "@/lib/constants";
 import { PrayerRequestForm } from "@/components/sections/PrayerRequestForm";
 
@@ -22,18 +22,31 @@ export default function ConnectPage() {
   return (
     <>
       {/* Page hero */}
-      <div className="bg-[#FAF9F6] border-b border-stone-200 pt-32 pb-14 md:pt-40 md:pb-16">
-        <div className="container-content text-center space-y-4">
-          <p className="eyebrow text-[#CC1120] tracking-[0.2em]">We&apos;re Here For You</p>
-          <h1 className="font-display text-4xl sm:text-6xl text-[#1A1917] font-semibold tracking-tight">
-            Connect With Us
-          </h1>
-          <p className="text-stone-600 text-lg max-w-xl mx-auto font-sans leading-relaxed">
-            Whether you have a question, need prayer, or want to speak with our pastoral team —
-            our door and hearts are open.
-          </p>
+      <section className="relative isolate min-h-[48svh] md:min-h-[54svh] flex items-end overflow-hidden bg-[#1A1917] text-white">
+        <div className="absolute inset-0 -z-20">
+          <Image
+            src="/images/church/Worship3%20-.jpeg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center brightness-[1.12]"
+          />
         </div>
-      </div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/90 via-[#1A1917]/65 to-[#1A1917]/25" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#1A1917]/40 via-transparent to-transparent" />
+        <div className="container-content w-full py-24 md:py-32">
+          <div className="max-w-2xl">
+            <p className="eyebrow text-[#F08088] mb-5">We&apos;re Here For You</p>
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-medium leading-[0.94] tracking-tight text-[#FAF9F6]">
+              Connect With Us
+            </h1>
+            <p className="text-white/80 text-base sm:text-lg max-w-xl mt-6 leading-relaxed">
+              Whether you have a question, need prayer, or want to speak with our pastoral team — our door and hearts are open.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Main Connect Section */}
       <section className="section-padding bg-white border-b border-stone-200">
@@ -44,12 +57,12 @@ export default function ConnectPage() {
             <div className="lg:col-span-5 space-y-8">
               
               {/* User's uploaded prayer photo */}
-              <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-stone-200 shadow-sm">
+              <div className="relative aspect-[16/10] w-full overflow-hidden border border-stone-200 shadow-sm">
                 <Image
-                  src="/images/hands-bible-prayer.jpg"
-                  alt="Hands folded in prayer on an open Bible"
+                  src="/images/church/Pastor%20praying%20for%20people%20-.jpeg"
+                  alt="A pastor praying with members of the church"
                   fill
-                  className="object-cover"
+                  className="object-cover brightness-[1.08]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex flex-col justify-end p-5 text-white">
                   <p className="text-xs uppercase tracking-widest text-[#FAF9F6] font-bold">Pastoral Care</p>
@@ -65,10 +78,10 @@ export default function ConnectPage() {
                 <div className="space-y-4">
                   <a
                     href={`tel:${CHURCH_CONTACT.phoneTel}`}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-[#FAF9F6] border border-stone-200 hover:border-[#CC1120]/40 transition-colors group"
+                    className="flex items-start gap-4 p-4 bg-[#FAF9F6] border border-stone-200 hover:border-[#CC1120]/40 transition-colors group"
                     aria-label={`Call us: ${CHURCH_CONTACT.phone}`}
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#F5E5E7] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC1120] transition-colors">
+                    <div className="w-10 h-10 bg-[#F5E5E7] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC1120] transition-colors">
                       <Phone size={16} className="text-[#CC1120] group-hover:text-white transition-colors" aria-hidden="true" />
                     </div>
                     <div>
@@ -79,8 +92,8 @@ export default function ConnectPage() {
                     </div>
                   </a>
 
-                  <div className="flex items-start gap-4 p-4 rounded-xl bg-[#FAF9F6] border border-stone-200">
-                    <div className="w-10 h-10 rounded-lg bg-[#F5E5E7] flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 bg-[#FAF9F6] border border-stone-200">
+                    <div className="w-10 h-10 bg-[#F5E5E7] flex items-center justify-center flex-shrink-0">
                       <MapPin size={16} className="text-[#CC1120]" aria-hidden="true" />
                     </div>
                     <div>
@@ -115,7 +128,7 @@ export default function ConnectPage() {
             </div>
 
             {/* Right: Prayer Request Form */}
-            <div id="prayer" className="lg:col-span-7 bg-[#FAF9F6] p-8 sm:p-10 rounded-3xl border border-stone-200 shadow-xs">
+            <div id="prayer" className="lg:col-span-7 bg-[#FAF9F6] p-7 sm:p-9 border border-stone-200 shadow-xs">
               <PrayerRequestForm />
             </div>
 
