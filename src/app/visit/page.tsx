@@ -75,7 +75,7 @@ export default function VisitPage() {
                 <h2 id="location-heading" className="font-display text-3xl text-[#1A1917] font-semibold mb-4">
                   Location &amp; Directions
                 </h2>
-                <div className="flex items-start gap-3.5 text-stone-700 bg-[#FAF9F6] p-6 rounded-2xl border border-stone-200">
+                <div className="flex items-start gap-4 text-stone-700 bg-[#FAF9F6] p-6 border border-stone-200">
                   <MapPin size={22} className="text-[#CC1120] mt-0.5 flex-shrink-0" aria-hidden="true" />
                   <div className="space-y-1">
                     <p className="font-bold text-base text-[#1A1917]">{CHURCH_LOCATION.address}</p>
@@ -93,7 +93,7 @@ export default function VisitPage() {
               </div>
 
               <div id="service-times" className="space-y-3">
-                <div className="flex items-start gap-3.5 bg-[#FAF9F6] p-6 rounded-2xl border border-stone-200">
+                <div className="flex items-start gap-4 bg-[#FAF9F6] p-6 border border-stone-200">
                   <Clock size={22} className="text-[#CC1120] mt-0.5 flex-shrink-0" aria-hidden="true" />
                   <div className="space-y-2">
                     <h3 className="font-bold text-base text-[#1A1917]">
@@ -102,13 +102,18 @@ export default function VisitPage() {
                     <p className="text-sm text-stone-600 leading-relaxed">
                       Sunday Service takes place every Sunday from 10:00 AM to 1:00 PM. You are welcome to join us.
                     </p>
-                    <a
-                      href={`tel:${CHURCH_CONTACT.phoneTel}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#CC1120] hover:underline"
-                    >
-                      <Phone size={13} aria-hidden="true" />
-                      {CHURCH_CONTACT.phone}
-                    </a>
+                    <div className="flex flex-wrap items-center gap-3 pt-1">
+                      <a
+                        href={`tel:${CHURCH_CONTACT.phoneTel}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#CC1120] hover:underline"
+                      >
+                        <Phone size={13} aria-hidden="true" />
+                        {CHURCH_CONTACT.phone}
+                      </a>
+                      {CHURCH_CONTACT.alternatePhone && (
+                        <span className="text-xs text-stone-400">· {CHURCH_CONTACT.alternatePhone}</span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -138,16 +143,32 @@ export default function VisitPage() {
               </div>
             </div>
 
-            <div className="relative aspect-video lg:aspect-square w-full overflow-hidden bg-stone-100 border border-stone-200">
-              <Image
-                src="/images/church/COngregation_9%20-.jpeg"
-                alt="Salvation Church Uganda gathering"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
-                <span className="text-xs uppercase tracking-widest text-white/80 font-bold">Find Us</span>
-                <p className="font-display text-2xl font-semibold">Namulanda, Entebbe Road</p>
+            <div className="space-y-6">
+              <div className="relative aspect-[16/10] lg:aspect-[4/3] w-full overflow-hidden bg-stone-100 border border-stone-200">
+                <iframe
+                  src={CHURCH_LOCATION.embedUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Salvation Church Uganda location map"
+                  className="absolute inset-0 w-full h-full"
+                />
+              </div>
+
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-stone-100 border border-stone-200">
+                <Image
+                  src="/images/church/COngregation_9%20-.jpeg"
+                  alt="Salvation Church Uganda gathering in Namulanda"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5 text-white">
+                  <span className="text-[10px] uppercase tracking-widest text-white/80 font-bold">Worship with us</span>
+                  <p className="font-display text-xl font-semibold">Namulanda, Entebbe Road</p>
+                </div>
               </div>
             </div>
           </div>

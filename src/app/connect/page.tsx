@@ -85,12 +85,30 @@ export default function ConnectPage() {
                       <Phone size={16} className="text-[#CC1120] group-hover:text-white transition-colors" aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-stone-500 font-sans">Telephone</p>
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-stone-500 font-sans">Primary Phone</p>
                       <p className="font-bold text-sm text-[#1A1917] group-hover:text-[#CC1120] transition-colors">
                         {CHURCH_CONTACT.phone}
                       </p>
                     </div>
                   </a>
+
+                  {CHURCH_CONTACT.alternatePhone && (
+                    <a
+                      href={`tel:${CHURCH_CONTACT.alternatePhoneTel}`}
+                      className="flex items-start gap-4 p-4 bg-[#FAF9F6] border border-stone-200 hover:border-[#CC1120]/40 transition-colors group"
+                      aria-label={`Alternate phone: ${CHURCH_CONTACT.alternatePhone}`}
+                    >
+                      <div className="w-10 h-10 bg-[#F5E5E7] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC1120] transition-colors">
+                        <Phone size={16} className="text-[#CC1120] group-hover:text-white transition-colors" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-stone-500 font-sans">Alternate Phone</p>
+                        <p className="font-bold text-sm text-[#1A1917] group-hover:text-[#CC1120] transition-colors">
+                          {CHURCH_CONTACT.alternatePhone}
+                        </p>
+                      </div>
+                    </a>
+                  )}
 
                   <div className="flex items-start gap-4 p-4 bg-[#FAF9F6] border border-stone-200">
                     <div className="w-10 h-10 bg-[#F5E5E7] flex items-center justify-center flex-shrink-0">
@@ -109,10 +127,10 @@ export default function ConnectPage() {
                     href={CHURCH_SOCIAL.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-4 p-4 rounded-xl bg-[#FAF9F6] border border-stone-200 hover:border-[#CC1120]/40 transition-colors group"
+                    className="flex items-start gap-4 p-4 bg-[#FAF9F6] border border-stone-200 hover:border-[#CC1120]/40 transition-colors group"
                     aria-label="Salvation Church Uganda on YouTube (opens in a new tab)"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#F5E5E7] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC1120] transition-colors">
+                    <div className="w-10 h-10 bg-[#F5E5E7] flex items-center justify-center flex-shrink-0 group-hover:bg-[#CC1120] transition-colors">
                       <YoutubeIcon size={16} className="text-[#CC1120] group-hover:text-white transition-colors" />
                     </div>
                     <div>

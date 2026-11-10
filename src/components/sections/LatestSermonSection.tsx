@@ -86,9 +86,16 @@ export function LatestSermonSection() {
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-white/70 text-sm">
-                  {loading ? "Loading the latest message…" : "Explore our messages"}
-                </div>
+                <>
+                  <img
+                    src="/images/church/Choir%20on%20stage1%20-.jpeg"
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center text-white/90 text-sm font-medium">
+                    {loading ? "Loading the latest message…" : "Explore our sermon library"}
+                  </div>
+                </>
               )}
               <div className="absolute inset-0 bg-black/25 group-hover:bg-black/15 transition-colors" />
               <div className="absolute inset-0 flex items-center justify-center">

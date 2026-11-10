@@ -3,11 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { NAV_LINKS, CHURCH_CONTACT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export function SiteNav() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -73,8 +75,8 @@ export function SiteNav() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "bg-[#FAF9F6]/95 backdrop-blur-md border-b border-stone-200/80 shadow-xs"
-            : "bg-transparent"
+            ? "bg-[#FAF9F6]/95 backdrop-blur-md border-b border-stone-200/80 shadow-xs py-0"
+            : "bg-gradient-to-b from-black/65 via-black/25 to-transparent pt-1 pb-2"
         )}
         role="banner"
       >
@@ -126,21 +128,38 @@ export function SiteNav() {
 
             {/* Desktop nav links */}
             <ul className="hidden lg:flex items-center gap-1" role="list">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      "px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-colors rounded-lg",
-                      isScrolled
-                        ? "text-stone-700 hover:text-[#CC1120]"
-                        : "text-white/90 hover:text-white hover:bg-white/10"
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "relative px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-colors rounded-lg",
+                        isScrolled
+                          ? isActive
+                            ? "text-[#CC1120] font-extrabold"
+                            : "text-stone-700 hover:text-[#CC1120]"
+                          : isActive
+                            ? "text-white bg-white/15"
+                            : "text-white/90 hover:text-white hover:bg-white/10"
+                      )}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {link.label}
+                      {isActive && (
+                        <span
+                          className={cn(
+                            "absolute bottom-0.5 left-3.5 right-3.5 h-[2px] rounded-full",
+                            isScrolled ? "bg-[#CC1120]" : "bg-white"
+                          )}
+                          aria-hidden="true"
+                        />
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
             {/* Desktop right CTAs */}
@@ -249,17 +268,27 @@ export function SiteNav() {
             aria-label="Mobile navigation"
           >
             <ul className="space-y-1" role="list">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={closeMobile}
-                    className="flex items-center w-full px-4 py-3.5 text-sm font-bold uppercase tracking-wider text-stone-800 hover:text-[#CC1120] hover:bg-[#F5E5E7] rounded-xl transition-colors duration-150"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={closeMobile}
+                      className={cn(
+                        "flex items-center justify-between w-full px-4 py-3.5 text-sm font-bold uppercase tracking-wider rounded-lg transition-colors duration-150",
+                        isActive
+                          ? "bg-[#F5E5E7] text-[#CC1120]"
+                          : "text-stone-800 hover:text-[#CC1120] hover:bg-stone-50"
+                      )}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      <span>{link.label}</span>
+                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#CC1120]" aria-hidden="true" />}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
