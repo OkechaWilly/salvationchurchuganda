@@ -49,7 +49,7 @@ export function LatestSermonSection() {
 
   return (
     <section
-      className="section-padding bg-[#1A1917] text-white border-b border-[#2C2B28] relative isolate overflow-hidden"
+      className="section-padding bg-[#262522] text-white border-b border-[#383734] relative isolate overflow-hidden"
       aria-labelledby="featured-message-heading"
     >
       {/* Subtle atmospheric ambient glow behind the video */}
