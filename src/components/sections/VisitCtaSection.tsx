@@ -65,11 +65,11 @@ export function VisitCtaSection() {
 
           <div className="lg:col-span-5 relative min-h-[300px] sm:min-h-[420px] bg-[#1A1917]">
             <Image
-              src="/images/worship-community.jpg"
+              src="/images/church/COngregation_9%20-.jpeg"
               alt=""
               fill
               sizes="(max-width: 1024px) 100vw, 42vw"
-              className="object-cover"
+              className="object-cover brightness-[1.1]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/10" />
             <div className="absolute bottom-7 left-7 right-7 text-white">

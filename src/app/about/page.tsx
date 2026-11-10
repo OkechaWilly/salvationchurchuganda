@@ -31,8 +31,8 @@ export default function AboutPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden bg-[#1A1917] pt-36 pb-20 md:pt-44 md:pb-28">
-        <div className="absolute inset-0 -z-10"><Image src="/images/church/Main%20church%20interior%20with%20congretation4%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center opacity-45" /></div>
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/95 via-[#1A1917]/75 to-[#1A1917]/35" />
+        <div className="absolute inset-0 -z-10"><Image src="/images/church/Main%20church%20interior%20with%20congretation4%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center brightness-[1.12] opacity-50" /></div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/85 via-[#1A1917]/65 to-[#1A1917]/25" />
         <div className="container-content relative z-10">
           <p className="eyebrow text-[#E05A64] mb-5">Come Experience the Difference</p>
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-[#FAF9F6] leading-[0.94] tracking-tight max-w-5xl">

@@ -10,13 +10,13 @@ export function MinistriesPreviewSection() {
     >
       <div className="container-content">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden bg-[#E8E7E1]">
+          <div className="lg:col-span-7 relative aspect-[4/3] overflow-hidden bg-[#E8E7E1]">
             <Image
               src="/images/church/Sunday%20school%20kids%2002%20-.jpeg"
               alt=""
               fill
               sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover"
+              className="object-cover object-top"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
             <p className="absolute bottom-5 left-5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">

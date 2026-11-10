@@ -39,14 +39,14 @@ export function HeroSection() {
               fill
               priority={index === 0}
               sizes="100vw"
-              className="object-cover object-center"
+              className="object-cover object-center brightness-[1.12]"
             />
           </div>
         ))}
       </div>
 
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/70 via-black/25 to-black/20" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/35 via-transparent to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/60 via-black/20 to-black/10" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/25 via-transparent to-transparent" />
 
       <div className="container-content w-full pb-12 sm:pb-16 lg:pb-20 pt-32">
         <div className="max-w-4xl">

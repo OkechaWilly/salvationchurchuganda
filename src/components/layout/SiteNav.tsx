@@ -112,7 +112,7 @@ export function SiteNav() {
               />
               {/* Color Logo (on white scrolled bar) */}
               <Image
-                src="/images/logo-color.jpg"
+                src="/images/logo-color.png"
                 alt="Salvation Church Uganda"
                 width={170}
                 height={55}
@@ -226,7 +226,7 @@ export function SiteNav() {
           {/* Panel header */}
           <div className="flex items-center justify-between px-6 py-5 border-b border-stone-200">
             <Image
-              src="/images/logo-color.jpg"
+              src="/images/logo-color.png"
               alt="Salvation Church Uganda"
               width={140}
               height={48}
