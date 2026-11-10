@@ -30,7 +30,9 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <>
-      <section className="relative bg-[#1A1917] pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+      <section className="relative isolate overflow-hidden bg-[#1A1917] pt-36 pb-20 md:pt-44 md:pb-28">
+        <div className="absolute inset-0 -z-10"><Image src="/images/church/Main%20church%20interior%20with%20congretation4%20-.jpeg" alt="" fill priority sizes="100vw" className="object-cover object-center opacity-45" /></div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/95 via-[#1A1917]/75 to-[#1A1917]/35" />
         <div className="container-content relative z-10">
           <p className="eyebrow text-[#E05A64] mb-5">Come Experience the Difference</p>
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] text-[#FAF9F6] leading-[0.94] tracking-tight max-w-5xl">
@@ -85,7 +87,7 @@ export default function AboutPage() {
         <div className="container-content">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
             <div className="md:col-span-5 relative aspect-[4/5] max-h-[520px] bg-[#E8E7E1] overflow-hidden">
-              <Image src="/images/worship-community.jpg" alt="The Salvation Church Uganda community gathered in worship" fill className="object-cover" sizes="(max-width: 768px) 100vw, 42vw" />
+              <Image src="/images/church/Pr%20Nijel%2001%20-.jpeg" alt="Pastor Nijel Rawlins" fill className="object-cover object-center" sizes="(max-width: 768px) 100vw, 42vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
               <span className="absolute bottom-5 left-5 text-[10px] uppercase tracking-[0.18em] text-white">Salvation Church Uganda</span>
             </div>
