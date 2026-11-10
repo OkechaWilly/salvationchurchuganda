@@ -36,17 +36,31 @@ const FAQ_ITEMS = [
 export default function VisitPage() {
   return (
     <>
-      <div className="bg-[#FAF9F6] border-b border-stone-200 pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="container-content text-center space-y-4">
-          <p className="eyebrow text-[#CC1120] tracking-[0.2em]">Come Experience the Difference</p>
-          <h1 className="font-display text-4xl sm:text-6xl text-[#1A1917] font-semibold tracking-tight">
-            Plan Your Visit
-          </h1>
-          <p className="text-stone-600 text-lg max-w-xl mx-auto font-sans leading-relaxed">
-            Join us in Namulanda for a Sunday gathering. Whether you are visiting for the first time or looking for a church community, we would be glad to welcome you.
-          </p>
+      <section className="relative isolate min-h-[52svh] md:min-h-[58svh] flex items-end overflow-hidden bg-[#1A1917] text-white">
+        <div className="absolute inset-0 -z-20">
+          <Image
+            src="/images/church/Main%20church%20interior%20with%20congretation5%20-.jpeg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center brightness-[1.12]"
+          />
         </div>
-      </div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1917]/85 via-[#1A1917]/55 to-[#1A1917]/15" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#1A1917]/45 via-transparent to-[#1A1917]/10" />
+        <div className="container-content w-full py-24 md:py-32">
+          <div className="max-w-2xl">
+            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.24em] text-white/80 mb-5">Come Experience the Difference</p>
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-medium leading-[0.94] tracking-tight text-white">
+              Plan Your Visit
+            </h1>
+            <p className="text-base sm:text-lg text-white/85 max-w-xl mt-6 leading-relaxed">
+              Join us in Namulanda for a Sunday gathering. Whether you are visiting for the first time or looking for a church community, we would be glad to welcome you.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section
         id="location"
@@ -126,7 +140,7 @@ export default function VisitPage() {
 
             <div className="relative aspect-video lg:aspect-square w-full overflow-hidden bg-stone-100 border border-stone-200">
               <Image
-                src="/images/worship-community.jpg"
+                src="/images/church/COngregation_9%20-.jpeg"
                 alt="Salvation Church Uganda gathering"
                 fill
                 className="object-cover"
@@ -149,10 +163,10 @@ export default function VisitPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-6 relative aspect-[4/3] overflow-hidden bg-stone-200">
               <Image
-                src="/images/child-prayer.jpg"
+                src="/images/church/Sunday%20sch5%20-.jpeg"
                 alt="Children at a church gathering"
                 fill
-                className="object-cover object-top"
+                className="object-cover object-top brightness-[1.06]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
               <span className="absolute bottom-5 left-5 text-xs font-semibold uppercase tracking-[0.18em] text-white">
