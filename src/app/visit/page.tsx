@@ -72,7 +72,7 @@ export default function VisitPage() {
             <div className="space-y-8">
               <div>
                 <p className="eyebrow mb-2">Where to find us</p>
-                <h2 id="location-heading" className="font-display text-3xl text-[#1A1917] font-semibold mb-4">
+                <h2 id="location-heading" className="font-display text-3xl sm:text-4xl text-[#1A1917] mb-4">
                   Location &amp; Directions
                 </h2>
                 <div className="flex items-start gap-4 text-stone-700 bg-[#FAF9F6] p-6 border border-stone-200">
@@ -197,7 +197,7 @@ export default function VisitPage() {
 
             <div className="lg:col-span-6 space-y-5">
               <p className="eyebrow text-[#CC1120]">A place for little ones</p>
-              <h2 id="kids-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917] font-semibold leading-[1.08]">
+              <h2 id="kids-heading" className="font-display text-4xl sm:text-5xl text-[#1A1917] leading-[1.08]">
                 Sunday School
               </h2>
               <p className="text-stone-600 leading-relaxed font-sans text-base">
@@ -226,7 +226,7 @@ export default function VisitPage() {
           <div className="container-narrow mx-0 space-y-8">
             <div>
               <p className="eyebrow mb-2">First time questions</p>
-              <h2 id="expect-heading" className="font-display text-3xl sm:text-4xl text-[#1A1917] font-semibold">
+              <h2 id="expect-heading" className="font-display text-3xl sm:text-4xl text-[#1A1917]">
                 What to expect
               </h2>
             </div>
@@ -257,7 +257,7 @@ export default function VisitPage() {
 
       <section className="section-padding-sm bg-[#1A1917] text-white" aria-label="Visit call to action">
         <div className="container-content text-center space-y-4">
-          <h2 className="font-display text-3xl sm:text-4xl text-white font-semibold">
+          <h2 className="font-display text-3xl sm:text-4xl text-white">
             We&apos;d love to welcome you.
           </h2>
           <p className="text-white/70 font-sans text-sm max-w-md mx-auto">

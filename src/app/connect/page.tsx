@@ -71,7 +71,7 @@ export default function ConnectPage() {
               </div>
 
               <div>
-                <h2 className="font-display text-2xl text-[#1A1917] font-semibold mb-5">
+                <h2 className="font-display text-2xl text-[#1A1917] mb-5">
                   Direct Contact Information
                 </h2>
 
