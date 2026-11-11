@@ -81,13 +81,24 @@
   /* Heading defaults — display typeface */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.02em;
     color: #1A1917;
   }
 
-  p { line-height: 1.7; }
+  p {
+    line-height: 1.72;
+    max-width: 72ch; /* prevents excessively long prose lines */
+  }
+
+  /* Full-width prose override for layout elements */
+  nav p, header p, footer p,
+  [class*="flex"] > p,
+  [class*="grid"] > p,
+  td p, li p {
+    max-width: none;
+  }
 
   a { color: inherit; text-decoration: none; }
 
